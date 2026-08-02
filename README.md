@@ -395,8 +395,10 @@ revision is not recorded in this repository's history.
 ## Citing
 
 Citation metadata is in [`CITATION.cff`](CITATION.cff). The repository is available at
-<https://github.com/navalmor/data-driven-models-for-chaotic-pdes-comparative-study>. No release
-identifier or DOI has been assigned yet; cite the commit hash you used.
+<https://github.com/navalmor/data-driven-models-for-chaotic-pdes-comparative-study>.
+
+The current release is **v1.0.0**, dated 2 August 2026. No DOI has been assigned, so cite the
+version together with the commit hash you used.
 
 ## Author and acknowledgement
 
