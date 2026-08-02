@@ -1,0 +1,110 @@
+{
+  "experiment": {
+    "run_id": "final_optimizer_search_rc_public",
+    "type": "forecasting_visualization",
+    "model": "forecasting"
+  },
+  "visualization": {
+    "run_id": "final_optimizer_search_rc_public"
+  },
+  "inputs": {
+    "optimizer_groups": [
+      {
+        "label": "rc_full64",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/rc_full64"
+        ]
+      },
+      {
+        "label": "rc_latent8",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/rc_latent8"
+        ]
+      }
+    ]
+  },
+  "search_plots": {
+    "enabled": true,
+    "metric": "valid_relative_l2_horizon_time",
+    "objective": "maximize",
+    "use_lyapunov": false,
+    "lambda_max": 0.043,
+    "surrogate": {
+      "enabled": true,
+      "max_train_points": 1200,
+      "random_seed": 0
+    },
+    "parameters": [
+      {
+        "name": "reservoir_size",
+        "label": "reservoir size",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "spectral_radius",
+        "label": "spectral radius",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "input_scaling",
+        "label": "input scaling",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "leaking_rate",
+        "label": "leaking rate",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "ridge_alpha",
+        "label": "log10 ridge alpha",
+        "kind": "continuous",
+        "scale": "log10",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "sparsity",
+        "label": "sparsity",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "washout_steps",
+        "label": "washout steps",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      }
+    ]
+  },
+  "forecast_plots": {
+    "enabled": false
+  },
+  "output": {
+    "base_dir": "outputs/optimizer_search_public/rc",
+    "formats": [
+      "png"
+    ],
+    "dpi": 300,
+    "overwrite": true
+  },
+  "logging": {
+    "level": "INFO"
+  }
+}

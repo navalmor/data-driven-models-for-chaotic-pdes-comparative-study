@@ -1,0 +1,62 @@
+{
+  "experiment": {
+    "type": "optimizer_search",
+    "model": "ngrc",
+    "run_id": "ngrc_full64_example_search",
+    "data_mode": "full64"
+  },
+  "data": {
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "preprocessing": {
+    "standardize": true
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 20.0,
+    "relative_l2_threshold": 0.5
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "model": {
+    "context_steps": 4,
+    "delay_spacing": 1,
+    "include_bias": true,
+    "include_linear": true,
+    "include_quadratic": true,
+    "include_sin": true,
+    "include_cos": true,
+    "quadratic_mode": "diagonal",
+    "ridge_alpha": 1e-05
+  },
+  "output": {
+    "base_dir": "outputs/optimizer_search",
+    "run_group": "example",
+    "overwrite": true,
+    "append_registry": false,
+    "evaluate_test": false
+  },
+  "search": {
+    "n_calls": 8,
+    "n_initial_points": 4,
+    "max_feature_dimension": 20000,
+    "append_best_to_registry": false,
+    "optimizer_seeds": {
+      "gp": 101,
+      "dummy": 102,
+      "forest": 103,
+      "gbrt": 104
+    },
+    "feature_sets": ["full"],
+    "context_steps_min": 2,
+    "context_steps_max": 4,
+    "delay_spacing_values": [1],
+    "ridge_alpha_min": 1e-06,
+    "ridge_alpha_max": 1e-02,
+    "quadratic_modes": ["diagonal"],
+    "include_bias_values": [true]
+  }
+}

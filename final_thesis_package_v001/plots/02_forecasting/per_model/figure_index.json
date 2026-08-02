@@ -1,0 +1,264 @@
+{
+  "config_path": "final_thesis_package_v001/configs/03_plots/forecasting_visuals.json",
+  "figures": [
+    {
+      "kind": "relative_l2_horizon",
+      "label": "ngrc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_full64/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "ngrc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_full64/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "ngrc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_full64/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "ngrc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_full64/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "ngrc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_latent8/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "ngrc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_latent8/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "ngrc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_latent8/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "ngrc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/ngrc_latent8/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "rc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_full64/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "rc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_full64/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "rc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_full64/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "rc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_full64/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "rc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_latent8/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "rc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_latent8/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "rc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_latent8/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "rc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/rc_latent8/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_full64/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_full64/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_full64/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_full64/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_latent8/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_latent8/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_latent8/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/perc_latent8/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "pinn_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_full64/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "pinn_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_full64/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "pinn_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_full64/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "pinn_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_full64/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "pinn_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_latent8/validation_relative_l2_horizon.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "pinn_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_latent8/validation_spatiotemporal_comparison.png"
+      ],
+      "split": "validation"
+    },
+    {
+      "kind": "relative_l2_horizon",
+      "label": "pinn_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_latent8/test_relative_l2_horizon.png"
+      ],
+      "split": "test"
+    },
+    {
+      "kind": "spatiotemporal_comparison",
+      "label": "pinn_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/02_forecasting/per_model/pinn_latent8/test_spatiotemporal_comparison.png"
+      ],
+      "split": "test"
+    }
+  ],
+  "output_dir": "final_thesis_package_v001/plots/02_forecasting/per_model",
+  "run_id": "final_forecasting_visuals",
+  "skipped": []
+}

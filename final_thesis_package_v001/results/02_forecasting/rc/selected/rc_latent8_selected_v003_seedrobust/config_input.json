@@ -1,0 +1,106 @@
+{
+  "data": {
+    "decoder_run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014",
+    "native_data_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/latent_data",
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "latent8",
+    "model": "rc",
+    "run_id": "rc_latent8_selected_v003_seedrobust",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "description": "Seed-robust repaired selected configuration for rc_latent8. Hyperparameters are candidate c02 (forest trial 54) of rc_latent8_optimizer_search_v002, chosen by a validation-only 15-seed median rule.",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "is_luckiest_seed": false,
+      "luckiest_seed_validation_horizon_time": 26.1,
+      "note": "Deliberately NOT the best-performing seed. The locked model must be typical of the seed distribution, not a lucky tail draw.",
+      "random_seed": 9403102,
+      "rule": "the rerank seed whose validation horizon is CLOSEST TO THE 15-SEED MEDIAN",
+      "validation_horizon_time_at_this_seed": 20.0
+    },
+    "finite_fraction_diagnostic": {
+      "median_finite_relative_l2_fraction_over_15_seeds": 1.0,
+      "note": "DIAGNOSTIC ONLY (decisions D3/D6). finite_fraction was NOT used to filter or rank candidates. It records long-rollout boundedness, which the horizon metric does not penalise.",
+      "representative_seed_finite_relative_l2_fraction": 0.5897959183673469
+    },
+    "recovery_method": "run_id_reconstruction",
+    "recovery_note": "Non-winner trial directories were not retained by this search. Hyperparameters were recovered by the VALIDATED run_id reconstruction: continuous dims decoded at full precision from the run_id, categoricals from the results CSV (exactly representable), fixed flags from the tracked search config, seed from the documented formula. The method was proven BIT-EXACT (10/10 fields) against this search's surviving winner trial before use. No truncated CSV float was ever used for a continuous field.",
+    "runtime_profile": "scripts/repro_env.sh (OMP_NUM_THREADS=1) - deterministic",
+    "seed_robust_rerank": {
+      "max_validation_horizon_time": 26.1,
+      "mean_validation_horizon_time": 19.71333333333333,
+      "median_validation_horizon_time": 20.0,
+      "min_validation_horizon_time": 13.8,
+      "n_candidates": 10,
+      "n_seeds": 15,
+      "seed_set": [
+        9403101,
+        9403102,
+        9403103,
+        9403104,
+        9403105,
+        9403106,
+        9403107,
+        9403108,
+        9403109,
+        9403110,
+        9403111,
+        9403112,
+        9403113,
+        9403114,
+        9403115
+      ],
+      "std_validation_horizon_time": 4.051960137067115
+    },
+    "selection_rule": "Highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9403101-9403115), then mean, then min, then median valid_relative_l2_mean, then smaller candidate rank. Validation only \u2014 no test metric was used at any stage.",
+    "selection_source": {
+      "candidate_rank_in_search": 2,
+      "optimizer_search_directory": "experiments/forecasting/rc/search/optimizer/rc_latent8_optimizer_search_v002",
+      "optimizer_search_run_id": "rc_latent8_optimizer_search_v002",
+      "source_optimizer": "forest",
+      "source_run_id": "rc_latent8_optimizer_search_v002_forest_trial0054_n1500_sr0p08167511252434739_in0p12866768136520199_leak0p7445868956948865_ridge0p058021497665977535_w100",
+      "source_search_validation_horizon_time": 30.200000000000003,
+      "source_trial": 54
+    },
+    "stage": "rc_latent8_selected_seedrobust",
+    "supersede_reason": "The superseded config reported valid_h 42.400000000000006, which the lightweight seed screen showed lies ABOVE the entire range of fresh seeds. Its seed was the winning trial's seed, i.e. selected for being lucky (optimizer_search_*.py assigns a different seed to every trial and the selected config inherits the winner's).",
+    "supersedes": "forecasting/configs/rc/selected/latent8_rc_selected_v002.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once after validation-only selection",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "include_bias": true,
+    "include_input_skip": true,
+    "input_scaling": 0.12866768136520199,
+    "leaking_rate": 0.7445868956948865,
+    "random_seed": 9403102,
+    "reservoir_size": 1500,
+    "ridge_alpha": 0.058021497665977535,
+    "sparsity": 0.02,
+    "spectral_radius": 0.08167511252434739,
+    "washout_steps": 100
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

@@ -1,0 +1,6 @@
+model_id,old_selected_valid_h,old_selected_test_h,repaired_median_valid_h_15seeds,repaired_selected_valid_h,repaired_selected_test_h,valid_ratio_old_over_repaired_median,repaired_min_valid_h,repaired_max_valid_h,repaired_std_valid_h
+rc_full64,49.6,25.1,24.4,24.400000000000002,15.9,2.0327868852459017,19.9,32.0,3.0075777312521463
+rc_latent8,42.4,14.7,20.0,20.0,16.6,2.12,13.8,26.1,4.051960137067115
+perc_full64,45.3,16.3,25.6,25.6,39.300000000000004,1.7695312499999998,23.6,64.3,10.846592618355842
+perc_latent8,22.1,2.7,16.2,16.2,3.8000000000000003,1.3641975308641976,6.800000000000001,20.6,4.58436265498062
+pinn_latent8,26.7,6.9,10.4,10.4,8.4,2.567307692307692,7.6,20.5,3.504663559696803

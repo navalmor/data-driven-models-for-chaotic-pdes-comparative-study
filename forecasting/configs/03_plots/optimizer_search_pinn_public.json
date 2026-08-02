@@ -1,0 +1,118 @@
+{
+  "experiment": {
+    "run_id": "final_optimizer_search_pinn_public",
+    "type": "forecasting_visualization",
+    "model": "forecasting"
+  },
+  "visualization": {
+    "run_id": "final_optimizer_search_pinn_public"
+  },
+  "inputs": {
+    "optimizer_groups": [
+      {
+        "label": "pinn_full64",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/pinn_full64"
+        ]
+      },
+      {
+        "label": "pinn_latent8",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/pinn_latent8"
+        ]
+      }
+    ]
+  },
+  "search_plots": {
+    "enabled": true,
+    "metric": "valid_relative_l2_horizon_time",
+    "objective": "maximize",
+    "use_lyapunov": false,
+    "lambda_max": 0.043,
+    "surrogate": {
+      "enabled": true,
+      "max_train_points": 1200,
+      "random_seed": 0
+    },
+    "parameters": [
+      {
+        "name": "hidden_dim",
+        "label": "hidden dimension",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "learning_rate",
+        "label": "log10 learning rate",
+        "kind": "continuous",
+        "scale": "log10",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "beta_multistep",
+        "label": "beta multistep",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "lambda_phy",
+        "label": "lambda physics",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "multistep_horizon",
+        "label": "multistep horizon",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "random_seed",
+        "label": "trial random seed",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "depth",
+        "label": "depth",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "epochs",
+        "label": "epochs",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      }
+    ]
+  },
+  "forecast_plots": {
+    "enabled": false
+  },
+  "output": {
+    "base_dir": "outputs/optimizer_search_public/pinn",
+    "formats": [
+      "png"
+    ],
+    "dpi": 300,
+    "overwrite": true
+  },
+  "logging": {
+    "level": "INFO"
+  }
+}

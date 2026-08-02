@@ -1,0 +1,44 @@
+{
+  "label": "repro_latent8_trial014",
+  "source_run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014",
+  "source_config": "final_thesis_package_v001/configs/01_ae_sindy/latent8_trial014_representation.json",
+  "source_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+  "normalization_stats_path": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014/normalization_stats.json",
+  "model_checkpoint_path": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014/model.pt",
+  "params_path": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014/params.pkl",
+  "normalize": true,
+  "device_used": "cuda",
+  "input_shape": [
+    30106,
+    64
+  ],
+  "latent_shape": [
+    30106,
+    8
+  ],
+  "splits": {
+    "train": [
+      0,
+      20000
+    ],
+    "valid": [
+      20000,
+      25000
+    ],
+    "test": [
+      25000,
+      30106
+    ]
+  },
+  "files": {
+    "z_series": "z_series.npy",
+    "z_train": "z_train.npy",
+    "z_valid": "z_valid.npy",
+    "z_test": "z_test.npy",
+    "u_reconstructed": "u_reconstructed.npy",
+    "reconstruction_summary": "reconstruction_summary.csv",
+    "reconstruction_mse_per_timestep": "reconstruction_mse_per_timestep.npy",
+    "reconstruction_mae_per_timestep": "reconstruction_mae_per_timestep.npy"
+  },
+  "downstream_usage_note": "Train RC/NGRC/PINN/PERC on z_train/z_valid/z_test. Decode predicted latent states using the decoder from the same run_dir."
+}

@@ -1,0 +1,117 @@
+{
+  "experiment": {
+    "run_id": "final_optimizer_search_rc",
+    "type": "forecasting_visualization",
+    "model": "forecasting"
+  },
+  "visualization": {
+    "run_id": "final_optimizer_search_rc"
+  },
+  "inputs": {
+    "optimizer_groups": [
+      {
+        "label": "rc_full64",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/rc_full64"
+        ],
+        "search_dirs_original_experiment_paths": [
+          "experiments/forecasting/rc/search/optimizer/rc_full64_optimizer_search_v002"
+        ]
+      },
+      {
+        "label": "rc_latent8",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/rc_latent8"
+        ],
+        "search_dirs_original_experiment_paths": [
+          "experiments/forecasting/rc/search/optimizer/rc_latent8_optimizer_search_v002"
+        ]
+      }
+    ],
+    "_optimizer_groups_comment": "search_dirs point at the canonical extracted trial data tracked in this repository. The original experiments/... paths are preserved per group under search_dirs_original_experiment_paths for provenance; they are not present in this repository and must not be used to re-fetch anything."
+  },
+  "search_plots": {
+    "enabled": true,
+    "metric": "valid_relative_l2_horizon_time",
+    "objective": "maximize",
+    "use_lyapunov": false,
+    "lambda_max": 0.043,
+    "surrogate": {
+      "enabled": true,
+      "max_train_points": 1200,
+      "random_seed": 0
+    },
+    "parameters": [
+      {
+        "name": "reservoir_size",
+        "label": "reservoir size",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "spectral_radius",
+        "label": "spectral radius",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "input_scaling",
+        "label": "input scaling",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "leaking_rate",
+        "label": "leaking rate",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "ridge_alpha",
+        "label": "log10 ridge alpha",
+        "kind": "continuous",
+        "scale": "log10",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "sparsity",
+        "label": "sparsity",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "washout_steps",
+        "label": "washout steps",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": false,
+        "include_in_surrogate": false
+      }
+    ]
+  },
+  "forecast_plots": {
+    "enabled": false
+  },
+  "output": {
+    "base_dir": "final_thesis_package_v001/plots/optimizer_search/rc",
+    "formats": [
+      "png"
+    ],
+    "dpi": 300,
+    "overwrite": false
+  },
+  "logging": {
+    "level": "INFO"
+  }
+}

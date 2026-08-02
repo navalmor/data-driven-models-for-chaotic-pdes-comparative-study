@@ -1,0 +1,122 @@
+{
+  "constraint": {
+    "domain_length": 22.0,
+    "quadrature": "rectangle",
+    "surrogate_fit": {
+      "include_intercept": true,
+      "method": "ridge",
+      "min_surrogate_response_std": 1e-10,
+      "min_surrogate_slope_norm": 1e-12,
+      "ridge_alpha": 1e-08
+    },
+    "surrogate_target": "decoded_training_latent_integral",
+    "target_mode": "train_mean",
+    "true_physical_target_source": "training_physical_integral_mean",
+    "type": "ks_spatial_integral_latent_linear_surrogate",
+    "zero_tolerance": 1e-08
+  },
+  "data": {
+    "decoder_run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014",
+    "native_data_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/latent_data",
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "latent8",
+    "model": "perc",
+    "run_id": "perc_latent8_selected_v002_seedrobust",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "description": "Seed-robust repaired selected configuration for perc_latent8. Hyperparameters are candidate c06 (gp trial 38) of perc_latent8_optimizer_search_v002, chosen by a validation-only 15-seed median rule.",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "is_luckiest_seed": false,
+      "luckiest_seed_validation_horizon_time": 20.6,
+      "note": "Deliberately NOT the best-performing seed. The locked model must be typical of the seed distribution, not a lucky tail draw.",
+      "random_seed": 9403113,
+      "rule": "the rerank seed whose validation horizon is CLOSEST TO THE 15-SEED MEDIAN",
+      "validation_horizon_time_at_this_seed": 16.2
+    },
+    "finite_fraction_diagnostic": {
+      "median_finite_relative_l2_fraction_over_15_seeds": 0.1474747474747474,
+      "note": "DIAGNOSTIC ONLY (decisions D3/D6). finite_fraction was NOT used to filter or rank candidates. It records long-rollout boundedness, which the horizon metric does not penalise.",
+      "representative_seed_finite_relative_l2_fraction": 0.0743434343434343
+    },
+    "recovery_method": "config_resolved",
+    "recovery_note": "Candidate hyperparameters recovered from the trial's config_resolved.json.",
+    "runtime_profile": "scripts/repro_env.sh (OMP_NUM_THREADS=1) - deterministic",
+    "seed_robust_rerank": {
+      "max_validation_horizon_time": 20.6,
+      "mean_validation_horizon_time": 13.873333333333331,
+      "median_validation_horizon_time": 16.2,
+      "min_validation_horizon_time": 6.800000000000001,
+      "n_candidates": 10,
+      "n_seeds": 15,
+      "seed_set": [
+        9403101,
+        9403102,
+        9403103,
+        9403104,
+        9403105,
+        9403106,
+        9403107,
+        9403108,
+        9403109,
+        9403110,
+        9403111,
+        9403112,
+        9403113,
+        9403114,
+        9403115
+      ],
+      "std_validation_horizon_time": 4.58436265498062
+    },
+    "selection_rule": "Highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9403101-9403115), then mean, then min, then median valid_relative_l2_mean, then smaller candidate rank. Validation only \u2014 no test metric was used at any stage.",
+    "selection_source": {
+      "candidate_rank_in_search": 6,
+      "optimizer_search_directory": "experiments/forecasting/perc/search/optimizer/perc_latent8_optimizer_search_v002",
+      "optimizer_search_run_id": "perc_latent8_optimizer_search_v002",
+      "source_optimizer": "gp",
+      "source_run_id": "perc_latent8_optimizer_search_v002_gp_trial0038_n750_sr0p12700546538457844_in0p038122494340160316_leak0p16196401354959583_ridge7p20809420624489em05_w50",
+      "source_search_validation_horizon_time": 19.4,
+      "source_trial": 38
+    },
+    "stage": "perc_latent8_selected_seedrobust",
+    "supersede_reason": "The superseded config reported valid_h 22.1, which the lightweight seed screen showed lies ABOVE the entire range of fresh seeds. Its seed was the winning trial's seed, i.e. selected for being lucky (optimizer_search_*.py assigns a different seed to every trial and the selected config inherits the winner's).",
+    "supersedes": "forecasting/configs/perc/selected/latent8_perc_selected_v001.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once after validation-only selection",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "include_bias": true,
+    "include_input_skip": true,
+    "input_scaling": 0.038122494340160316,
+    "leaking_rate": 0.16196401354959583,
+    "random_seed": 9403113,
+    "reservoir_size": 750,
+    "ridge_alpha": 7.20809420624489e-05,
+    "sparsity": 0.005,
+    "spectral_radius": 0.12700546538457844,
+    "washout_steps": 50
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

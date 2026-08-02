@@ -1,0 +1,34 @@
+# Python environments
+.venv/
+venv/
+.env
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Internal review and audit workspace. Local working material only: it is not
+# part of the scientific baseline and must never reach the public release.
+_local_review/
+
+# Generated run outputs (never part of the tracked release)
+outputs/
+experiments/
+reproduction_runs/
+test_repro_ae_sindy/
+logs/
+runs/
+
+# Cluster / scheduler logs
+slurm-*.out
+*.err
+
+# OS cruft
+.DS_Store
+Thumbs.db

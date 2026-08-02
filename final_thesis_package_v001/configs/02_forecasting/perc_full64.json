@@ -1,0 +1,111 @@
+{
+  "constraint": {
+    "domain_length": 22.0,
+    "quadrature": "rectangle",
+    "target_mode": "train_mean",
+    "type": "ks_spatial_integral",
+    "zero_tolerance": 1e-08
+  },
+  "data": {
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 20.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "full64",
+    "model": "perc",
+    "run_id": "perc_full64_selected_v003_seedrobust",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "description": "Seed-robust repaired selected configuration for perc_full64. Hyperparameters are candidate c07 (forest trial 46) of perc_full64_optimizer_search_v003, chosen by a validation-only 15-seed median rule.",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "is_luckiest_seed": false,
+      "luckiest_seed_validation_horizon_time": 64.3,
+      "note": "Deliberately NOT the best-performing seed. The locked model must be typical of the seed distribution, not a lucky tail draw.",
+      "random_seed": 9403103,
+      "rule": "the rerank seed whose validation horizon is CLOSEST TO THE 15-SEED MEDIAN",
+      "validation_horizon_time_at_this_seed": 25.6
+    },
+    "finite_fraction_diagnostic": {
+      "median_finite_relative_l2_fraction_over_15_seeds": 1.0,
+      "note": "DIAGNOSTIC ONLY (decisions D3/D6). finite_fraction was NOT used to filter or rank candidates. It records long-rollout boundedness, which the horizon metric does not penalise.",
+      "representative_seed_finite_relative_l2_fraction": 0.616969696969697
+    },
+    "recovery_method": "run_id_reconstruction",
+    "recovery_note": "Non-winner trial directories were not retained by this search. Hyperparameters were recovered by the VALIDATED run_id reconstruction: continuous dims decoded at full precision from the run_id, categoricals from the results CSV (exactly representable), fixed flags from the tracked search config, seed from the documented formula. The method was proven BIT-EXACT (10/10 fields) against this search's surviving winner trial before use. No truncated CSV float was ever used for a continuous field.",
+    "runtime_profile": "scripts/repro_env.sh (OMP_NUM_THREADS=1) - deterministic",
+    "seed_robust_rerank": {
+      "max_validation_horizon_time": 64.3,
+      "mean_validation_horizon_time": 29.500000000000004,
+      "median_validation_horizon_time": 25.6,
+      "min_validation_horizon_time": 23.6,
+      "n_candidates": 10,
+      "n_seeds": 15,
+      "seed_set": [
+        9403101,
+        9403102,
+        9403103,
+        9403104,
+        9403105,
+        9403106,
+        9403107,
+        9403108,
+        9403109,
+        9403110,
+        9403111,
+        9403112,
+        9403113,
+        9403114,
+        9403115
+      ],
+      "std_validation_horizon_time": 10.846592618355842
+    },
+    "selection_rule": "Highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9403101-9403115), then mean, then min, then median valid_relative_l2_mean, then smaller candidate rank. Validation only \u2014 no test metric was used at any stage.",
+    "selection_source": {
+      "candidate_rank_in_search": 7,
+      "optimizer_search_directory": "experiments/forecasting/perc/search/optimizer/perc_full64_optimizer_search_v003",
+      "optimizer_search_run_id": "perc_full64_optimizer_search_v003",
+      "source_optimizer": "forest",
+      "source_run_id": "perc_full64_optimizer_search_v003_forest_trial0046_n3000_sr0p21576753604097568_in0p030907865903607414_leak0p5867641768355315_ridge2p338121523722021em06_w50",
+      "source_search_validation_horizon_time": 25.700000000000003,
+      "source_trial": 46
+    },
+    "stage": "perc_full64_selected_seedrobust",
+    "supersede_reason": "The superseded config reported valid_h 45.300000000000004, which the lightweight seed screen showed lies ABOVE the entire range of fresh seeds. Its seed was the winning trial's seed, i.e. selected for being lucky (optimizer_search_*.py assigns a different seed to every trial and the selected config inherits the winner's).",
+    "supersedes": "forecasting/configs/perc/selected/full64_perc_selected_v002.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once after validation-only selection",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "include_bias": true,
+    "include_input_skip": true,
+    "input_scaling": 0.030907865903607414,
+    "leaking_rate": 0.5867641768355315,
+    "random_seed": 9403103,
+    "reservoir_size": 3000,
+    "ridge_alpha": 2.338121523722021e-06,
+    "sparsity": 0.02,
+    "spectral_radius": 0.21576753604097568,
+    "washout_steps": 50
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

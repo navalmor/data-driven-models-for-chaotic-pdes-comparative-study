@@ -1,0 +1,22 @@
+# Direct Python dependencies for
+#   "Optimized Data-Driven Models for PDEs: A Comparative Study" (Kuramoto-Sivashinsky).
+#
+# These are the pinned direct dependencies of the scientific code. They are a readable
+# install set, not a full transitive lock. Python 3.12 is expected. For the exact
+# environment used to produce the tested GPU checkpoints, including the CUDA stack, see
+# environment-lock.yml.
+#
+# PyTorch note: the packaged checkpoints were built with the conda package
+#   pytorch=2.6.0=cuda126_mkl_py312_h30b5a27_304
+# Installing torch==2.6.0 from PyPI gives a different BLAS/CUDA build. It runs the default
+# reproduction workflow on CPU and should pass the numeric-tolerance validation contract,
+# but it is not guaranteed to reproduce checkpoints bit for bit. If you need a specific
+# CPU-only or CUDA build, follow the official PyTorch installation instructions for your
+# platform instead of relying on this pin.
+
+numpy==1.26.4
+scipy==1.17.1
+scikit-learn==1.3.2
+scikit-optimize==0.10.2
+matplotlib==3.10.8
+torch==2.6.0

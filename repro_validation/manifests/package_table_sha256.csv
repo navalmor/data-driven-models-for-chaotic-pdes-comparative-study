@@ -1,0 +1,7 @@
+relative_path,sha256,file_size_bytes,role
+final_thesis_package_v001/tables/ae_sindy_final_metrics.csv,02e6ab78977c579f7f2a3e61582be8ecfbf8c3b41ce7cb520d05fbcb03cdcab4,4992,Stage 8 final table - SOURCE OF TRUTH for expected metrics
+final_thesis_package_v001/tables/final_thesis_results_summary.csv,c46c502b65be5634e72798544955926107880b7ff5d65caf863b82f5d05554f5,5361,Stage 8 final table - SOURCE OF TRUTH for expected metrics
+final_thesis_package_v001/tables/forecasting_final_metrics.csv,e742505346e70800faf109508e6f53c669849d6fbdf3a67f05020832f9daa3da,12050,Stage 8 final table - SOURCE OF TRUTH for expected metrics
+final_thesis_package_v001/tables/result_card_index.csv,f62950746f2865b6f66e9a9e8a296f97b296c5701147076fb9b976a651cbbd71,1549,Stage 8 final table - SOURCE OF TRUTH for expected metrics
+final_thesis_package_v001/tables/result_provenance_steps.csv,e18c164bd85fd0779fad43ff221e7af2cb0a416ad7bf553cb0a320b90873607d,98602,Stage 8 final table - SOURCE OF TRUTH for expected metrics
+final_thesis_package_v001/manifests/package_plot_index.csv,66c23d090d42e6b73645b7df69666f6538d2bea854c79964ad0534421b11abb1,74724,Stage 7C plot index - one row per PNG (76)

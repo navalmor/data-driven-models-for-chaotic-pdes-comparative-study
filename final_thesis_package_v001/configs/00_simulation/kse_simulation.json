@@ -1,0 +1,17 @@
+{
+  "output_dir": "final_thesis_package_v001/results/00_simulation",
+  "nx": 64,
+  "L": 22.0,
+  "dt": 0.1,
+  "n_steps": 30606,
+  "transient": 500,
+  "seed": 42,
+  "out_every": 1,
+  "no_dealias": false,
+  "verbose": true,
+  "save_plot": true,
+  "use_lyapunov": true,
+  "lambda_max": 0.043,
+  "lyapunov_time_label": "time $t$ [$1/\\lambda_{\\max}$]",
+  "physical_time_label": "time $t$"
+}

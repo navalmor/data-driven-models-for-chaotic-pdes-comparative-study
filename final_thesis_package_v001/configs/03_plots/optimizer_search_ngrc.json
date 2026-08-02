@@ -1,0 +1,107 @@
+{
+  "experiment": {
+    "run_id": "final_optimizer_search_ngrc",
+    "type": "forecasting_visualization",
+    "model": "forecasting"
+  },
+  "visualization": {
+    "run_id": "final_optimizer_search_ngrc"
+  },
+  "inputs": {
+    "optimizer_groups": [
+      {
+        "label": "ngrc_full64",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/ngrc_full64"
+        ],
+        "search_dirs_original_experiment_paths": [
+          "experiments/forecasting/ngrc/search/optimizer/ngrc_full64_optimizer_search_v003_stable_ridge"
+        ]
+      },
+      {
+        "label": "ngrc_latent8",
+        "search_dirs": [
+          "forecasting/data/optimizer_search/ngrc_latent8"
+        ],
+        "search_dirs_original_experiment_paths": [
+          "experiments/forecasting/ngrc/search/optimizer/ngrc_latent8_optimizer_search_v002",
+          "experiments/forecasting/ngrc/search/optimizer/ngrc_latent8_optimizer_tree_search_v002"
+        ]
+      }
+    ],
+    "_optimizer_groups_comment": "search_dirs point at the canonical extracted trial data tracked in this repository. The original experiments/... paths are preserved per group under search_dirs_original_experiment_paths for provenance; they are not present in this repository and must not be used to re-fetch anything."
+  },
+  "search_plots": {
+    "enabled": true,
+    "metric": "valid_relative_l2_horizon_time",
+    "objective": "maximize",
+    "use_lyapunov": false,
+    "lambda_max": 0.043,
+    "surrogate": {
+      "enabled": true,
+      "max_train_points": 1200,
+      "random_seed": 0
+    },
+    "parameters": [
+      {
+        "name": "context_steps",
+        "label": "context steps",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "delay_spacing",
+        "label": "delay spacing",
+        "kind": "continuous",
+        "scale": "linear",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "ridge_alpha",
+        "label": "log10 ridge alpha",
+        "kind": "continuous",
+        "scale": "log10",
+        "include_in_matrix": true,
+        "include_in_surrogate": true
+      },
+      {
+        "name": "feature_set",
+        "label": "feature set",
+        "kind": "categorical",
+        "include_in_matrix": true,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "quadratic_mode",
+        "label": "quadratic mode",
+        "kind": "categorical",
+        "include_in_matrix": true,
+        "include_in_surrogate": false
+      },
+      {
+        "name": "include_bias",
+        "label": "include bias",
+        "kind": "boolean",
+        "include_in_matrix": true,
+        "include_in_surrogate": false
+      }
+    ]
+  },
+  "forecast_plots": {
+    "enabled": false
+  },
+  "output": {
+    "base_dir": "final_thesis_package_v001/plots/optimizer_search/ngrc",
+    "formats": [
+      "png"
+    ],
+    "dpi": 300,
+    "overwrite": false
+  },
+  "logging": {
+    "level": "INFO"
+  }
+}

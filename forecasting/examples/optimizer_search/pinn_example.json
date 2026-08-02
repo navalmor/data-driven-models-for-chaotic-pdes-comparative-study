@@ -1,0 +1,63 @@
+{
+  "experiment": {
+    "type": "optimizer_search",
+    "model": "pinn",
+    "run_id": "pinn_full64_example_search",
+    "data_mode": "full64"
+  },
+  "data": {
+    "data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "preprocessing": {
+    "standardize": true
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "model": {
+    "activation": "tanh",
+    "batch_size": 128,
+    "batches_per_epoch": 30,
+    "beta_multistep": 0.25,
+    "dealias": true,
+    "depth": 3,
+    "device": "auto",
+    "domain_length": 22.0,
+    "epochs": 20,
+    "gradient_clip_norm": 1.0,
+    "hidden_dim": 128,
+    "lambda_phy": 0.0,
+    "learning_rate": 0.0004,
+    "multistep_horizon": 3,
+    "native_dimension": 64,
+    "physics_residual": "cnab2",
+    "physics_scale": "delta_rms",
+    "random_seed": 9201101,
+    "residual_prediction": true,
+    "weight_decay": 1e-06
+  },
+  "output": {
+    "base_dir": "outputs/optimizer_search",
+    "run_group": "example",
+    "overwrite": true,
+    "append_registry": false,
+    "evaluate_test": false
+  },
+  "search": {
+    "optimizers": ["dummy"],
+    "optimizer_settings": {
+      "dummy": { "n_calls": 4, "n_initial_points": 0, "random_seed": 27185001 }
+    },
+    "space": [
+      { "name": "hidden_dim", "type": "categorical", "values": [128, 256] },
+      { "name": "depth", "type": "categorical", "values": [3, 4] },
+      { "name": "learning_rate", "type": "real", "prior": "log-uniform", "low": 0.00015, "high": 0.0007 },
+      { "name": "multistep_horizon", "type": "categorical", "values": [3, 5] },
+      { "name": "beta_multistep", "type": "real", "prior": "uniform", "low": 0.15, "high": 0.8 }
+    ]
+  }
+}

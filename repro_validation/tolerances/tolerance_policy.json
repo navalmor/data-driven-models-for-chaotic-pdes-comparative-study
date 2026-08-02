@@ -1,0 +1,159 @@
+{
+  "schema": "tolerance_policy/v1",
+  "generated_by": "Stage 9 (validation contract creation only)",
+  "created": "2026-07-16",
+  "status": "DRAFT CONTRACT - no validator implemented yet; Stage 10 will consume this.",
+  "principle": "Conservative by default. A tolerance exists to absorb a KNOWN, EXPLAINED source of variation - never to make a comparison pass. Where a tolerance could not be justified from evidence it is marked review_required rather than guessed.",
+  "units_rule": {
+    "statement": "Every numeric validation target in this contract is in PHYSICAL simulation time or is dimensionless. No validation target is ever read from a plot.",
+    "why": "Per-model forecasting figures, the simulation figure and AE-SINDy time axes are plotted in LYAPUNOV time (t*lambda_max, lambda_max=0.043). A horizon marker on those axes equals physical x 0.043 and deliberately does NOT match the tables.",
+    "reference": "final_thesis_package_v001/manifests/package_plot_index.csv"
+  },
+  "levels": {
+    "exact_checksum": {
+      "comparison_method": "sha256_exact",
+      "tolerance": null,
+      "applies_to": [
+        "final_thesis_package_v001/results/00_simulation/{u_series,t,x}.npy",
+        "final_thesis_package_v001/results/01_ae_sindy/latent6_trial002_dynamics_baseline/**/model.pt",
+        "final_thesis_package_v001/configs/**/*.json",
+        "final_thesis_package_v001/tables/*.csv",
+        "final_thesis_package_v001/manifests/package_plot_index.csv",
+        "all 74 package PNGs (via the Stage 6 + Stage 7B plot manifests)"
+      ],
+      "why_acceptable": "These artifacts are frozen or are the source of truth. They are copied or already produced; nothing recomputes them, so byte-identity is the correct and achievable test.",
+      "do_not_use_when": "The artifact is produced by a fresh computation. Any recomputed float array, model checkpoint or figure will differ in bits across environments even when scientifically identical. Never demand exact_checksum of a re-run output.",
+      "review_required": false
+    },
+    "exact_shape": {
+      "comparison_method": "shape_exact",
+      "tolerance": null,
+      "applies_to": [
+        "u_series (30106, 64)", "t (30106,)", "x (64,)",
+        "z_series (30106, 8)", "z_train (20000, 8)", "z_valid (5000, 8)", "z_test (5106, 8)",
+        "u_reconstructed (30106, 64)"
+      ],
+      "why_acceptable": "Shapes are structural. They are set by the split indices and the latent dimension and cannot legitimately drift; a shape change means a different dataset or a different representation.",
+      "do_not_use_when": "Never a substitute for a value check - a correct shape says nothing about correct numbers.",
+      "review_required": false
+    },
+    "exact_integer": {
+      "comparison_method": "integer_exact",
+      "tolerance": 0,
+      "applies_to": [
+        "latent6 active_terms = 17",
+        "post-hoc refit_active_terms = 292 (of 360)",
+        "post-hoc solver_success_count = 5",
+        "split sizes: train 20000, validation 5000, test 5106",
+        "nx = 64", "latent_dim = 8 (representation) / 6 (baseline)",
+        "n_post_transient_steps = 30106"
+      ],
+      "why_acceptable": "Counts are discrete outcomes of a deterministic thresholding or slicing rule. An off-by-one is a real difference, not numerical noise.",
+      "do_not_use_when": "The count comes from a fresh training run whose thresholding could legitimately land differently. Active-term counts are only exact-comparable against the FROZEN checkpoint / frozen representation, which is how they are used here.",
+      "review_required": false
+    },
+    "strict_float": {
+      "comparison_method": "numeric_abs_tolerance",
+      "tolerance": 1e-12,
+      "applies_to": [
+        "latent8 reconstruction_mse_mean = 0.006592637859284878 (AE8-001)",
+        "latent8 reconstruction_mae_mean = 0.062012095004320145 (AE8-002)"
+      ],
+      "applies_to_history": "Until the Stage 10 recompute cleanup (2026-07-17) this level also covered latent6 test_decoder_error (AE6-003), post-hoc refit_train_mse (PH-004) and post-hoc mean_decoder_error (PH-005). Those three are now recomputed_float_relative, because Stage 10 reproduced them by RECOMPUTATION - exactly the case this level's do_not_use_when always excluded. The 1e-12 band itself is unchanged.",
+      "why_acceptable": "These values are READ from package-local result files that already contain them at full double precision. Reading and parsing is lossless, so the comparison is effectively exact and 1e-12 only absorbs decimal round-tripping.",
+      "do_not_use_when": "*** The value is RECOMPUTED rather than read. *** The latent arrays are float32 (~7 significant decimal digits), so a reconstruction metric recomputed from them cannot reproduce to 1e-12. For a pinned, deterministic CPU recompute from frozen inputs, use recomputed_float_relative. This level is NOT the read-from-file twin of that one: it remains the correct tolerance whenever a value is genuinely read.",
+      "review_required": true,
+      "review_reason": "Valid ONLY for read-from-file comparison. Flagged so Stage 10 cannot silently reuse 1e-12 for a recomputation path against float32 latent data. The two targets that remain here (AE8-001, AE8-002) belong to latent8_trial014_representation, which is now a FROZEN/checksum-validated representation (2026-07-17 policy lock): it is never retrained, so these values are always READ from the package and 1e-12 is both correct and achievable - they PASS. The review flag is retained as a guard, not as a live problem: if anyone ever re-wires this result to retrain, the flag fires and forces a decision, because neither 1e-12 nor the 1e-6 relative band would be justified for an unpinned cross-GPU retrain. See recomputed_float_relative.do_not_use_when."
+    },
+    "recomputed_float_relative": {
+      "comparison_method": "numeric_abs_tolerance",
+      "tolerance": 1e-12,
+      "tolerance_relative": 1e-6,
+      "band_rule": "abs(observed - expected) <= max(tolerance, tolerance_relative * max(abs(expected), abs(observed)))",
+      "units": "dimensionless",
+      "applies_to": [
+        "latent6 test_decoder_error = 0.022894755005836487 (AE6-003) - recomputed by run_analysis.py from the FROZEN checkpoint",
+        "post-hoc refit_train_mse = 0.0003019851840719146 (PH-004) - recomputed by posthoc_refit_sindy.py from the FROZEN latent8 representation",
+        "post-hoc mean_decoder_error = 0.005778396315872669 (PH-005) - same refit"
+      ],
+      "why_acceptable": "These metrics are RECOMPUTED by a fresh Stage 10 run from float32 latent arrays and float32 decoder weights. float32 carries ~7 significant decimal digits (eps ~= 1.19e-7), so the recomputed value cannot carry more information than that no matter how deterministic the pipeline is; demanding 1e-12 of it tests the storage format, not the science. 1e-6 relative is ~8x float32 eps: loose enough to absorb representation and summation-order noise, tight enough that it still resolves the metrics to ~6 significant digits - far finer than any figure quoted in the thesis (these values are reported to 3-4 significant digits at most).",
+      "why_this_does_not_hide_a_real_difference": "The band is proportional to the value, so it scales with what is being measured: AE6-003 gets 2.29e-8, PH-005 gets 5.78e-9, PH-004 gets 3.02e-10. A scientifically meaningful change in a reconstruction or refit error - a different checkpoint, a different window, a different threshold, a changed split - moves these metrics in the 3rd significant digit or earlier, i.e. by 1e-3 relative or more: FIVE orders of magnitude outside this band. There is no realistic defect that lands inside it.",
+      "empirical_basis": "Not a band chosen to make a comparison pass. All three targets were reproduced under controlled Stage 10 runs (post-hoc 20260717_000458, latent6 20260717_003254) with observed delta EXACTLY 0.0 - bit-identical to the packaged value. The band is therefore ~10 orders of magnitude wider than the observed variation; it exists to make the tolerance HONEST about float32's information content, not to absorb an actual discrepancy.",
+      "absolute_floor_rationale": "The 1e-12 absolute term is a floor for the degenerate case expected ~= 0, where a relative band collapses to nothing. It is INERT for every current target: the smallest expected value is 3.02e-4, whose relative band (3.02e-10) already exceeds it by ~300x. The relative term governs in every real case.",
+      "do_not_use_when": "(1) The value is READ from a file rather than recomputed - use strict_float; reading is lossless and 1e-12 is both correct and achievable. (2) The recompute is NOT under the pinned deterministic profile from frozen inputs. This band is justified by float32 REPRESENTATION limits only. It does NOT cover nondeterministic CUDA kernels or an unpinned retrain: a valid cross-GPU retrain of latent8_trial014_representation could exceed 1e-6 relative, so applying this band to AE8-001/AE8-002 would manufacture a FALSE FAIL. That is why they were left on strict_float - and, since the 2026-07-17 policy lock made that representation FROZEN (never retrained), the question is now moot by policy as well as by tolerance: AE8-001/AE8-002 are read from the package and pass at 1e-12. (3) Checksums, integer counts, shapes, forecasting/AE-SINDy horizon metrics, or any one-decimal reported quantity - horizons live on a dt=0.1 grid and have their own bands.",
+      "review_required": false
+    },
+    "horizon_reporting_physical": {
+      "comparison_method": "numeric_abs_tolerance",
+      "tolerance": 0.05,
+      "units": "physical simulation time",
+      "applies_to": [
+        "all 8 forecasting validation/test horizons (table-vs-table and table-vs-summary.json)",
+        "final_thesis_package_v001/tables/forecasting_final_metrics.csv",
+        "repro_validation/expected/forecasting_expected_metrics.{csv,json}"
+      ],
+      "why_acceptable": "Thesis horizons are quoted to ONE DECIMAL of physical time. A half-ulp-of-the-last-printed-digit band (0.05) is exactly what is needed to compare a rounded quoted value against the stored full-precision value (e.g. stored 379.90000000000003 vs quoted 379.9; stored 24.200000000000003 vs quoted 24.2). It cannot mask a real difference, because the horizon grid itself is dt = 0.1 - any genuine change is at least 2x this tolerance.",
+      "do_not_use_when": "Comparing a FRESH reproduction run. This tolerance assumes both sides derive from the same locked computation; use horizon_runtime_physical for re-run comparisons.",
+      "review_required": false
+    },
+    "ae_sindy_horizon_physical": {
+      "comparison_method": "numeric_abs_tolerance",
+      "tolerance": 0.05,
+      "units": "physical simulation time",
+      "applies_to": [
+        "latent6 test_sindy_horizon_time = 8.8",
+        "post-hoc mean test horizon = 10.860000000000001 and per-window 7.6 / 10.5 / 19.5 / 11.5 / 5.2"
+      ],
+      "why_acceptable": "Same reasoning as horizon_reporting_physical: AE-SINDy horizons are reported on a dt = 0.1 grid and quoted to one decimal, and both are read from package result files. The post-hoc mean is a mean of five one-decimal window values, so 0.05 comfortably covers its decimal representation (10.860000000000001).",
+      "do_not_use_when": "Comparing a fresh latent6 retrain - which is forbidden anyway: latent6 is a FROZEN checkpoint reanalysis, not a retrain. Do not use for multi-window mean/spread claims, which must be reported with their std (test std 4.85), not validated as a point.",
+      "review_required": false
+    },
+    "horizon_runtime_physical": {
+      "comparison_method": "numeric_abs_tolerance",
+      "tolerance": 0.11,
+      "units": "physical simulation time",
+      "applies_to": [
+        "FUTURE Stage 10 fresh reproduction runs that recompute a horizon from the time-step grid"
+      ],
+      "why_acceptable": "One dt = 0.1 step plus a small rounding allowance. A recomputed horizon is a crossing index on a 0.1 grid, so a one-step disagreement is the smallest possible non-zero difference.",
+      "do_not_use_when": "*** THIS TOLERANCE IS ONLY VALID UNDER TWO PRECONDITIONS. *** (1) The pinned deterministic runtime profile (scripts/repro_env.sh, OMP_NUM_THREADS=1) is used. Evidence: ngrc_full64's selected config records 'pinned/unpinned validation horizon difference 0.29%' - at 379.9 that is ~1.10 physical time, which is TEN TIMES this tolerance. An unpinned rerun of ngrc_full64 will fail a 0.11 check while being scientifically correct. (2) The exact locked seed is used. Evidence: pinn_full64's c05 15-seed validation spread is 8.7-29.3 (std 5.95) - a rerun at a different seed can differ by ~20.6, roughly 190x this tolerance. Stochastic models are only comparable at their locked median-representative seed.",
+      "review_required": true,
+      "review_reason": "0.11 is defensible ONLY for a same-profile, same-seed rerun. Stage 10 must either enforce both preconditions or define a separate, much wider tolerance (and for stochastic models a distributional check, not a point check). Do not apply this tolerance to table-vs-table checks - use horizon_reporting_physical."
+    },
+    "lyapunov_axis_note": {
+      "comparison_method": "not_a_numeric_tolerance",
+      "tolerance": null,
+      "applies_to": ["documentation and figure interpretation only"],
+      "statement": "Plots may show LYAPUNOV time; every validation target uses PHYSICAL simulation time. A horizon marker on a per-model forecasting figure equals physical x 0.043 and will NOT equal the tables - that is intended behaviour (open question Q-5), not a validation failure.",
+      "why_acceptable": "Recorded so a future reader does not mistake the unit difference for a reproduction error and 'fix' it.",
+      "do_not_use_when": "Never use a figure axis as a validation source at all.",
+      "review_required": false
+    }
+  },
+  "frozen_artifacts_never_regenerate": {
+    "simulation_dataset": {
+      "rule": "sha256 only. Never re-run the solver as a validation step.",
+      "why": "Chaotic trajectory over ~130 Lyapunov times; bit-identical regeneration is impossible in principle.",
+      "sha256_u_series": "85bb1902875e2b3062685cf327f4695e9e106bfbae7b39b70961e92b520a4417"
+    },
+    "latent6_trial002_checkpoint": {
+      "rule": "model.pt sha256 only. Reanalyse/visualise; never run run_train.py.",
+      "why": "retrained: false - a from-scratch retrain was attempted and REJECTED (cross-environment CUDA nondeterminism). The outcome IS the frozen selected checkpoint."
+    }
+  },
+  "reproducibility_classes": {
+    "package_reproducible_from_package_configs": [
+      "latent8_trial014_posthoc_thr0025_predictive (CPU; refit on the frozen representation)",
+      "all 8 forecasting models (CPU-reproducible; latent8 models consume the package's own latent export)"
+    ],
+    "frozen_checksum_verified_only": [
+      "simulation_dataset (solver never rerun)",
+      "latent6_trial002_dynamics_baseline (frozen checkpoint + package-local reanalysis)",
+      "latent8_trial014_representation (frozen learned representation; 2026-07-17 policy lock - never retrained. The earlier note here read 'GPU required to retrain the autoencoder; reproduced exactly, max abs difference 0.0'. That observation came from ONE validated CUDA device and is NOT a portable guarantee: the registry warns 'a legitimate retrain need not match bit-for-bit', and the identical claim for latent6 failed across environments. Exact cross-hardware GPU retraining is therefore NOT claimed. What IS claimed, and verified: the frozen bytes are checksum-validated, and every downstream result conditioned on them - the posthoc refit and all four latent8 forecasting models - reproduces from them identically.)"
+    ],
+    "checksum_verified_only_not_package_reproducible": [
+      "the 24 optimizer-search figures - generated from the private ~34 GB search archives under experiments/forecasting/, which are outside the package by design",
+      "the 5 seed-robustness figures are re-renderable from staged package CSVs, but the 750-run rerank behind them is not re-runnable from the package"
+    ]
+  }
+}

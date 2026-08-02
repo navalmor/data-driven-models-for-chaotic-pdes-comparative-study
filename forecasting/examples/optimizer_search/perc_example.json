@@ -1,0 +1,60 @@
+{
+  "experiment": {
+    "type": "perc_optimizer_search",
+    "model": "perc",
+    "run_id": "perc_full64_example_search",
+    "data_mode": "full64"
+  },
+  "constraint": {
+    "domain_length": 22.0,
+    "quadrature": "rectangle",
+    "target_mode": "train_mean",
+    "type": "ks_spatial_integral",
+    "zero_tolerance": 1e-08
+  },
+  "data": {
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "preprocessing": {
+    "standardize": true
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 20.0,
+    "relative_l2_threshold": 0.5
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "output": {
+    "base_dir": "outputs/optimizer_search",
+    "run_group": "example",
+    "overwrite": true,
+    "append_registry": false,
+    "evaluate_test": false
+  },
+  "search": {
+    "n_calls": 8,
+    "n_initial_points": 4,
+    "random_seed_base": 94030000,
+    "max_feature_dimension": 20000,
+    "resume": true,
+    "optimizer_seeds": {
+      "gp": 301,
+      "dummy": 302,
+      "forest": 303,
+      "gbrt": 304
+    },
+    "space": {
+      "reservoir_size": { "type": "integer", "low": 300, "high": 800 },
+      "sparsity": { "type": "real", "low": 0.01, "high": 0.05 },
+      "spectral_radius": { "type": "real", "low": 0.05, "high": 0.9 },
+      "input_scaling": { "type": "real", "low": 0.02, "high": 0.2 },
+      "leaking_rate": { "type": "real", "low": 0.2, "high": 0.9 },
+      "ridge_alpha": { "type": "real_log", "low": 1e-06, "high": 1e-01 },
+      "washout_steps": { "type": "integer", "low": 50, "high": 100 }
+    }
+  }
+}

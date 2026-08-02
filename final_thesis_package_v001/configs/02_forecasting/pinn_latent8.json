@@ -1,0 +1,120 @@
+{
+  "_runtime": {
+    "run_group_override": "selected",
+    "run_id_override": "pinn_latent8_selected_v002_seedrobust"
+  },
+  "data": {
+    "decoder_run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014",
+    "native_data_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/latent_data",
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "latent8",
+    "model": "pinn",
+    "run_group": "pinn_latent8_optimizer_search_v001",
+    "run_id": "pinn_latent8_selected_v002_seedrobust",
+    "stage": "optimizer",
+    "type": "single"
+  },
+  "metadata": {
+    "description": "Seed-robust repaired selected configuration for pinn_latent8. Hyperparameters are candidate c02 (gbrt trial 49) of pinn_latent8_optimizer_search_v001, chosen by a validation-only 15-seed median rule.",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "is_luckiest_seed": false,
+      "luckiest_seed_validation_horizon_time": 20.5,
+      "note": "Deliberately NOT the best-performing seed. The locked model must be typical of the seed distribution, not a lucky tail draw.",
+      "random_seed": 9403108,
+      "rule": "the rerank seed whose validation horizon is CLOSEST TO THE 15-SEED MEDIAN",
+      "validation_horizon_time_at_this_seed": 10.4
+    },
+    "finite_fraction_diagnostic": {
+      "median_finite_relative_l2_fraction_over_15_seeds": 0.5028,
+      "note": "DIAGNOSTIC ONLY (decisions D3/D6). finite_fraction was NOT used to filter or rank candidates. It records long-rollout boundedness, which the horizon metric does not penalise.",
+      "representative_seed_finite_relative_l2_fraction": 0.3296
+    },
+    "recovery_method": "config_resolved",
+    "recovery_note": "Candidate hyperparameters recovered from the trial's config_resolved.json.",
+    "runtime_profile": "scripts/repro_env.sh (OMP_NUM_THREADS=1) - deterministic",
+    "seed_robust_rerank": {
+      "max_validation_horizon_time": 20.5,
+      "mean_validation_horizon_time": 11.713333333333331,
+      "median_validation_horizon_time": 10.4,
+      "min_validation_horizon_time": 7.6,
+      "n_candidates": 10,
+      "n_seeds": 15,
+      "seed_set": [
+        9403101,
+        9403102,
+        9403103,
+        9403104,
+        9403105,
+        9403106,
+        9403107,
+        9403108,
+        9403109,
+        9403110,
+        9403111,
+        9403112,
+        9403113,
+        9403114,
+        9403115
+      ],
+      "std_validation_horizon_time": 3.504663559696803
+    },
+    "selection_rule": "Highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9403101-9403115), then mean, then min, then median valid_relative_l2_mean, then smaller candidate rank. Validation only \u2014 no test metric was used at any stage.",
+    "selection_source": {
+      "candidate_rank_in_search": 2,
+      "optimizer_search_directory": "experiments/forecasting/pinn/search/optimizer/pinn_latent8_optimizer_search_v001",
+      "optimizer_search_run_id": "pinn_latent8_optimizer_search_v001",
+      "source_optimizer": "gbrt",
+      "source_run_id": "pinn_latent8_optimizer_search_v001_gbrt_trial0049_h224_d4_lr0p000359_mh9_b0p672_lam8p95em08_ep120",
+      "source_search_validation_horizon_time": 28.8,
+      "source_trial": 49
+    },
+    "stage": "pinn_latent8_selected_seedrobust",
+    "supersede_reason": "The superseded config reported valid_h 26.700000000000003, which the lightweight seed screen showed lies ABOVE the entire range of fresh seeds. Its seed was the winning trial's seed, i.e. selected for being lucky (optimizer_search_*.py assigns a different seed to every trial and the selected config inherits the winner's).",
+    "supersedes": "forecasting/configs/pinn/selected/latent8_pinn_selected_v001.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once after validation-only selection",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "activation": "tanh",
+    "batch_size": 128,
+    "batches_per_epoch": 30,
+    "beta_multistep": 0.6720142025869338,
+    "dealias": true,
+    "depth": 4,
+    "device": "auto",
+    "domain_length": 22.0,
+    "epochs": 120,
+    "gradient_clip_norm": 1.0,
+    "hidden_dim": 224,
+    "lambda_phy": 8.952406955488689e-08,
+    "learning_rate": 0.00035872137722760494,
+    "multistep_horizon": 9,
+    "native_dimension": 8,
+    "physical_dimension": 64,
+    "physics_residual": "cnab2",
+    "physics_scale": "delta_rms",
+    "random_seed": 9403108,
+    "residual_prediction": true,
+    "weight_decay": 0.0
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "data": {
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 20.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "full64",
+    "model": "rc",
+    "run_id": "rc_full64_selected_v003_seedrobust",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "description": "Seed-robust repaired selected configuration for rc_full64. Hyperparameters are candidate c07 (forest trial 78) of rc_full64_optimizer_search_v002, chosen by a validation-only 15-seed median rule.",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "is_luckiest_seed": false,
+      "luckiest_seed_validation_horizon_time": 32.0,
+      "note": "Deliberately NOT the best-performing seed. The locked model must be typical of the seed distribution, not a lucky tail draw.",
+      "random_seed": 9403115,
+      "rule": "the rerank seed whose validation horizon is CLOSEST TO THE 15-SEED MEDIAN",
+      "validation_horizon_time_at_this_seed": 24.4
+    },
+    "finite_fraction_diagnostic": {
+      "median_finite_relative_l2_fraction_over_15_seeds": 0.6105050505050506,
+      "note": "DIAGNOSTIC ONLY (decisions D3/D6). finite_fraction was NOT used to filter or rank candidates. It records long-rollout boundedness, which the horizon metric does not penalise.",
+      "representative_seed_finite_relative_l2_fraction": 0.1086868686868686
+    },
+    "recovery_method": "run_id_reconstruction",
+    "recovery_note": "Non-winner trial directories were not retained by this search. Hyperparameters were recovered by the VALIDATED run_id reconstruction: continuous dims decoded at full precision from the run_id, categoricals from the results CSV (exactly representable), fixed flags from the tracked search config, seed from the documented formula. The method was proven BIT-EXACT (10/10 fields) against this search's surviving winner trial before use. No truncated CSV float was ever used for a continuous field.",
+    "runtime_profile": "scripts/repro_env.sh (OMP_NUM_THREADS=1) - deterministic",
+    "seed_robust_rerank": {
+      "max_validation_horizon_time": 32.0,
+      "mean_validation_horizon_time": 24.38666666666667,
+      "median_validation_horizon_time": 24.4,
+      "min_validation_horizon_time": 19.9,
+      "n_candidates": 10,
+      "n_seeds": 15,
+      "seed_set": [
+        9403101,
+        9403102,
+        9403103,
+        9403104,
+        9403105,
+        9403106,
+        9403107,
+        9403108,
+        9403109,
+        9403110,
+        9403111,
+        9403112,
+        9403113,
+        9403114,
+        9403115
+      ],
+      "std_validation_horizon_time": 3.0075777312521463
+    },
+    "selection_rule": "Highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9403101-9403115), then mean, then min, then median valid_relative_l2_mean, then smaller candidate rank. Validation only \u2014 no test metric was used at any stage.",
+    "selection_source": {
+      "candidate_rank_in_search": 7,
+      "optimizer_search_directory": "experiments/forecasting/rc/search/optimizer/rc_full64_optimizer_search_v002",
+      "optimizer_search_run_id": "rc_full64_optimizer_search_v002",
+      "source_optimizer": "forest",
+      "source_run_id": "rc_full64_optimizer_search_v002_forest_trial0078_n3000_sr0p29083981820376437_in0p04156574803182547_leak0p45063817331469014_ridge1p321832282188926em05_w50",
+      "source_search_validation_horizon_time": 26.200000000000003,
+      "source_trial": 78
+    },
+    "stage": "rc_full64_selected_seedrobust",
+    "supersede_reason": "The superseded config reported valid_h 49.6, which the lightweight seed screen showed lies ABOVE the entire range of fresh seeds. Its seed was the winning trial's seed, i.e. selected for being lucky (optimizer_search_*.py assigns a different seed to every trial and the selected config inherits the winner's).",
+    "supersedes": "forecasting/configs/rc/selected/full64_rc_selected_v002.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once after validation-only selection",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "include_bias": true,
+    "include_input_skip": true,
+    "input_scaling": 0.04156574803182547,
+    "leaking_rate": 0.45063817331469014,
+    "random_seed": 9403115,
+    "reservoir_size": 3000,
+    "ridge_alpha": 1.321832282188926e-05,
+    "sparsity": 0.02,
+    "spectral_radius": 0.29083981820376437,
+    "washout_steps": 50
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

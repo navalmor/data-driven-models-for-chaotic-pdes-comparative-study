@@ -1,0 +1,333 @@
+{
+  "_comment": [
+    "Central plotting size and style configuration (Phase 2, CH-12 / CH-13).",
+    "",
+    "Every published and thesis figure is drawn at the size it is PRINTED. The",
+    "pilot established why this matters: the optimizer sampling matrix was drawn",
+    "16.79 in wide and included at 7.60 in, so LaTeX rescaled it by 0.453 and a",
+    "10 pt tick label reached paper at 4.53 pt. Declaring a type size is only",
+    "meaningful when the canvas is the printed canvas.",
+    "",
+    "Widths here are final printed widths. Heights preserve each family's",
+    "existing aspect ratio, so figures keep their proportions and only their",
+    "scale changes."
+  ],
+  "page": {
+    "text_width_cm": 15.0,
+    "text_height_cm": 23.0,
+    "text_width_in": 5.90551,
+    "text_height_in": 9.05512,
+    "_comment": "The target thesis page geometry: text width 15 cm, text height 23 cm."
+  },
+  "page_classes": {
+    "full_width": {
+      "width_in": 5.90551,
+      "description": "Full text width on a portrait page. The default for every family.",
+      "type_scale": "standard"
+    },
+    "rotated_landscape": {
+      "width_in": 8.9,
+      "max_height_in": 5.75,
+      "description": "A rotated (sidewaysfigure) page, whose usable width is the text HEIGHT of 9.055 in. 8.90 in leaves a safety margin.",
+      "type_scale": "dense"
+    }
+  },
+  "type_scales": {
+    "standard": {
+      "font.size": 9.5,
+      "axes.labelsize": 9.5,
+      "axes.titlesize": 9.5,
+      "xtick.labelsize": 8.5,
+      "ytick.labelsize": 8.5,
+      "legend.fontsize": 8.5,
+      "figure.titlesize": 10.0,
+      "axes.linewidth": 0.8,
+      "xtick.major.width": 0.8,
+      "ytick.major.width": 0.8,
+      "xtick.major.size": 3.0,
+      "ytick.major.size": 3.0,
+      "grid.linewidth": 0.6,
+      "lines.linewidth": 1.6,
+      "lines.markersize": 4.0,
+      "patch.linewidth": 0.8
+    },
+    "dense": {
+      "font.size": 7.0,
+      "axes.labelsize": 7.5,
+      "axes.titlesize": 7.5,
+      "xtick.labelsize": 6.5,
+      "ytick.labelsize": 6.5,
+      "legend.fontsize": 7.0,
+      "figure.titlesize": 8.0,
+      "axes.linewidth": 0.6,
+      "xtick.major.width": 0.6,
+      "ytick.major.width": 0.6,
+      "xtick.major.size": 2.4,
+      "ytick.major.size": 2.4,
+      "grid.linewidth": 0.5,
+      "lines.linewidth": 1.2,
+      "lines.markersize": 3.0,
+      "patch.linewidth": 0.6
+    }
+  },
+  "output": {
+    "dpi": 300,
+    "formats_package": [
+      "png"
+    ],
+    "formats_thesis": [
+      "pdf"
+    ],
+    "rc_common": {
+      "pdf.fonttype": 42,
+      "ps.fonttype": 42,
+      "savefig.bbox": "tight",
+      "savefig.pad_inches": 0.04
+    },
+    "_comment": "pdf.fonttype 42 embeds TrueType rather than Type 3. The pilot measured it as smaller AND correct: with Type 3 the lambda in 'time t [1/lambda_max]' is lost on text extraction, with 42 it survives."
+  },
+  "minimum_printed_pt": {
+    "tick_label": 6.0,
+    "axis_label": 7.0,
+    "_comment": "Floor for legibility on paper. 'dense' sits at 6.5/7.5, which is the practical minimum for a 6x6 matrix on one rotated page."
+  },
+  "palette": {
+    "_comment": "Okabe-Ito, colourblind-safe. sky_blue replaces the non-Okabe-Ito #9ecae1 previously used by the seed-robustness figure.",
+    "black": "#000000",
+    "orange": "#E69F00",
+    "sky_blue": "#56B4E9",
+    "bluish_green": "#009E73",
+    "yellow": "#F0E442",
+    "blue": "#0072B2",
+    "vermillion": "#D55E00",
+    "reddish_purple": "#CC79A7",
+    "grey": "#808080"
+  },
+  "markers": {
+    "_comment": "One appearance per meaning, on every plot family. A dashed line is always the prediction horizon and a dotted line is always the safety cutoff, so a reader who learns the key on one page reads the next correctly.",
+    "prediction_horizon": {
+      "color": "#000000",
+      "linestyle": "--",
+      "linewidth": 2.0,
+      "alpha": 1.0,
+      "zorder": 3.0
+    },
+    "safety_cutoff": {
+      "color": "#000000",
+      "linestyle": ":",
+      "linewidth": 1.6,
+      "alpha": 0.9,
+      "zorder": 3.0
+    },
+    "masked_span": {
+      "color": "#808080",
+      "alpha": 0.12,
+      "zorder": 1.0
+    },
+    "error_threshold": {
+      "color": "#E69F00",
+      "linestyle": "--",
+      "linewidth": 1.6,
+      "alpha": 1.0,
+      "zorder": 2.0
+    },
+    "primary_series": {
+      "color": "#0072B2",
+      "linestyle": "-",
+      "linewidth": 1.6,
+      "alpha": 1.0,
+      "zorder": 2.0
+    },
+    "best_trial_star": {
+      "color": "#D55E00",
+      "edgecolor": "#000000",
+      "marker": "*",
+      "size_standard": 90.0,
+      "size_dense": 55.0
+    },
+    "trial_point": {
+      "size_standard": 14.0,
+      "size_dense": 10.0,
+      "alpha": 0.82
+    }
+  },
+  "notation": {
+    "_comment": "T_h is physical simulation time and NEVER appears on a Lyapunov-scaled axis. t_lambda is a position on a Lyapunov-scaled axis and NEVER appears on a physical one. The axis label already carries the unit, so it is not repeated per legend entry.",
+    "horizon_symbol_lyapunov": "t_\\lambda",
+    "horizon_symbol_physical": "T_h",
+    "cutoff_symbol_lyapunov": "t_{\\lambda,c}",
+    "cutoff_symbol_physical": "t_c",
+    "value_format": "{:.2f}",
+    "significant_figures_in_labels": 3
+  },
+  "terminology": {
+    "_comment": "One phrase per quantity. Retired variants are asserted absent by the guard tests.",
+    "prediction_horizon": "Prediction horizon",
+    "safety_cutoff": "Safety cutoff",
+    "error_threshold": "Error threshold",
+    "validation_horizon": "validation horizon",
+    "best_so_far_validation_horizon": "best-so-far validation horizon",
+    "surrogate_validation_horizon": "surrogate validation horizon",
+    "reconstruction_validity_time": "Reconstruction validity time",
+    "retired": [
+      "validation horizon time",
+      "masked/unsafe region",
+      "t_valid"
+    ]
+  },
+  "labels": {
+    "_comment": "Axis labels are lowercase sentence case, matching the shared time/space constants and the majority of existing figures. Legend ENTRIES stay capitalised, because they name a thing rather than describe an axis.",
+    "axis_label_case": "lower",
+    "legend_entry_case": "sentence",
+    "categorical_outer_tick_alignment": "inward",
+    "categorical_outer_tick_comment": "A centred label on the first or last tick overhangs its axes by half its own width; at printed size that overhang reaches the neighbouring panel. Anchoring the first label left and the last right keeps every label inside its own panel."
+  },
+  "panel_labels": {
+    "_comment": "POLICY PRESERVED. Figures that already carry boxed a/b/c labels keep them; figures that carry none stay without. No panel label is added for uniformity and none is removed. Only the appearance of existing labels is standardised.",
+    "policy": "preserve_existing",
+    "boxed_families": [
+      "ae_sindy_field_triptych",
+      "ae_sindy_latent_comparison",
+      "ae_sindy_training_history",
+      "spatiotemporal_comparison"
+    ],
+    "title_embedded_families": [
+      "physics_ablation"
+    ],
+    "unlabelled_families": [
+      "ae_sindy_xi_heatmap",
+      "optimizer_convergence",
+      "optimizer_sampling_matrix",
+      "optimizer_surrogate_landscape",
+      "relative_l2_horizon",
+      "seed_robust_boxplots",
+      "simulation_field"
+    ],
+    "_classification_note": "These sets record what each family ALREADY does, verified against the add_panel_labels call sites in the plotting sources. ae_sindy_training_history was initially listed as unlabelled from the visual audit; the code shows it has carried boxed a/b labels all along (visualization.py, descending_line_panel profile), and the preserve-existing policy means the contract follows the code."
+  },
+  "families": {
+    "_comment": "aspect_ratio is height/width, taken from the published figure so proportions are preserved. 'derived' means the family computes its own aspect from the number of search parameters.",
+    "relative_l2_horizon": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.583,
+      "pdf_class": "vector",
+      "legend_loc": "upper right",
+      "published_px": [
+        2158,
+        1258
+      ]
+    },
+    "spatiotemporal_comparison": {
+      "page_class": "full_width",
+      "aspect_ratio": 1.1585,
+      "pdf_class": "hybrid",
+      "legend_loc": "upper right",
+      "published_px": [
+        2277,
+        2638
+      ]
+    },
+    "optimizer_convergence": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.615,
+      "pdf_class": "vector",
+      "legend_loc": "lower right",
+      "published_px": [
+        2338,
+        1438
+      ]
+    },
+    "optimizer_sampling_matrix": {
+      "page_class": "rotated_landscape",
+      "aspect_ratio": "derived",
+      "pdf_class": "hybrid",
+      "legend_loc": null,
+      "published_px": [
+        4193,
+        3795
+      ],
+      "pdf_class_comment": "Hybrid, not fully vector: the scatter and histograms are vector but the colourbar gradient remains one small raster."
+    },
+    "optimizer_surrogate_landscape": {
+      "page_class": "full_width",
+      "aspect_ratio": "derived",
+      "pdf_class": "hybrid",
+      "legend_loc": null,
+      "published_px": [
+        2908,
+        2557
+      ]
+    },
+    "seed_robust_boxplots": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.6045,
+      "pdf_class": "vector",
+      "legend_loc": "lower center",
+      "published_px": [
+        2278,
+        1377
+      ]
+    },
+    "physics_ablation": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.489,
+      "pdf_class": "vector",
+      "legend_loc": null,
+      "published_px": [
+        2820,
+        1380
+      ]
+    },
+    "ae_sindy_field_triptych": {
+      "page_class": "full_width",
+      "aspect_ratio": 1.1586,
+      "pdf_class": "hybrid",
+      "legend_loc": "upper right",
+      "published_px": [
+        2283,
+        2644
+      ]
+    },
+    "ae_sindy_latent_comparison": {
+      "page_class": "full_width",
+      "aspect_ratio": 1.1586,
+      "pdf_class": "hybrid",
+      "legend_loc": "upper right",
+      "published_px": [
+        2282,
+        2644
+      ]
+    },
+    "ae_sindy_xi_heatmap": {
+      "page_class": "full_width",
+      "aspect_ratio": 1.1221,
+      "pdf_class": "hybrid",
+      "legend_loc": null,
+      "published_px": [
+        2490,
+        2794
+      ]
+    },
+    "ae_sindy_training_history": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.55,
+      "pdf_class": "vector",
+      "legend_loc": "best",
+      "published_px": [
+        3574,
+        1474
+      ],
+      "aspect_ratio_comment": "NOT the published 0.4124. That aspect was set for an 11.9 in canvas; at the printed 5.9 in width the same proportions leave only 2.44 in of height, so type at its declared size occupies twice the share of the canvas it used to and the two panels become cramped. 0.55 restores the data area from 49.7 % to 56.9 % of the canvas. Preserving a published aspect is right only when the canvas is not also being shrunk."
+    },
+    "simulation_field": {
+      "page_class": "full_width",
+      "aspect_ratio": 0.458,
+      "pdf_class": "hybrid",
+      "legend_loc": null,
+      "published_px": [
+        3153,
+        1444
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "output_root": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_posthoc_thr0025_predictive",
+  "models": [
+    {
+      "name": "latent8_trial014",
+      "run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014"
+    }
+  ],
+  "thresholds": [
+    0.025
+  ],
+  "ridge_alpha": 0.001,
+  "max_iter": 10,
+  "windows": [
+    [
+      25000,
+      26000
+    ],
+    [
+      26000,
+      27000
+    ],
+    [
+      27000,
+      28000
+    ],
+    [
+      28000,
+      29000
+    ],
+    [
+      29000,
+      30000
+    ]
+  ]
+}

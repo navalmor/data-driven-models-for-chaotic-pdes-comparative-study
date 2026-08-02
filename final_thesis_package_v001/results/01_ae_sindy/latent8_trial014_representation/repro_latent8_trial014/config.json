@@ -1,0 +1,61 @@
+{
+  "input_dim": 64,
+  "latent_dim": 8,
+  "model_order": 1,
+  "poly_order": 2,
+  "include_sine": false,
+  "activation": "elu",
+  "widths": [
+    256,
+    128,
+    64
+  ],
+  "coefficient_initialization": "xavier",
+  "sequential_thresholding": true,
+  "coefficient_threshold": 0.08858109183273348,
+  "coefficient_mask": null,
+  "init_coefficients": null,
+  "loss_weight_decoder": 1.0,
+  "loss_weight_sindy_z": 0.5370872456174222,
+  "loss_weight_sindy_x": 0.0011516030239050454,
+  "loss_weight_sindy_regularization": 0.004424352338720658,
+  "learning_rate": 0.00014844201349767605,
+  "batch_size": 512,
+  "epoch_size": null,
+  "max_epochs": 500,
+  "refinement_epochs": 50,
+  "print_progress": true,
+  "print_frequency": 10,
+  "threshold_frequency": 25,
+  "seed": 42,
+  "deterministic": true,
+  "device": "auto",
+  "output_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation",
+  "run_name": "repro_latent8_trial014",
+  "log_level": "INFO",
+  "dt": 0.1,
+  "data_file": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+  "train_slice": [
+    0,
+    20000
+  ],
+  "val_slice": [
+    20000,
+    25000
+  ],
+  "test_slice": [
+    25000,
+    30106
+  ],
+  "normalize": true,
+  "horizon_error_threshold": 0.5,
+  "analysis_generate_plots": false,
+  "analysis_rollout_max_steps": 1000,
+  "visualization_output_dir": null,
+  "visualization_show": false,
+  "use_lyapunov": true,
+  "lambda_max": 0.043,
+  "lyapunov_time_label": "time $t$ [$1/\\lambda_{\\max}$]",
+  "physical_time_label": "time $t$",
+  "library_dim": 45
+}

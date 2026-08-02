@@ -1,0 +1,13 @@
+result_id,card_path,final_table_row_exists,provenance_steps_count,primary_config_exists,primary_result_path_exists,primary_plots_exist,status
+simulation_dataset,reports/result_cards/00_simulation_dataset.md,"yes (final_thesis_results_summary.csv; it is a dataset, so it has no row in the forecasting/AE-SINDy metric tables by design)",3,yes,yes,yes,complete
+latent8_trial014_representation,reports/result_cards/01_ae_sindy_latent8_trial014_representation.md,yes,8,yes,yes,yes,complete
+latent6_trial002_dynamics_baseline,reports/result_cards/01_ae_sindy_latent6_trial002_dynamics_baseline.md,yes,7,yes,yes,yes,complete
+latent8_trial014_posthoc_thr0025_predictive,reports/result_cards/01_ae_sindy_latent8_trial014_posthoc_predictive.md,yes,4,yes,yes,n/a - zero post-hoc figures ship (Stage 5 decision),complete
+ngrc_full64,reports/result_cards/02_forecasting_ngrc_full64.md,yes,10,yes,yes,yes,complete
+ngrc_latent8,reports/result_cards/02_forecasting_ngrc_latent8.md,yes,8,yes,yes,yes,complete
+rc_full64,reports/result_cards/02_forecasting_rc_full64.md,yes,10,yes,yes,yes,complete
+rc_latent8,reports/result_cards/02_forecasting_rc_latent8.md,yes,10,yes,yes,yes,complete
+perc_full64,reports/result_cards/02_forecasting_perc_full64.md,yes,10,yes,yes,yes,complete
+perc_latent8,reports/result_cards/02_forecasting_perc_latent8.md,yes,10,yes,yes,yes,complete
+pinn_full64,reports/result_cards/02_forecasting_pinn_full64.md,yes,16,yes,yes,yes,complete
+pinn_latent8,reports/result_cards/02_forecasting_pinn_latent8.md,yes,10,yes,yes,yes,complete

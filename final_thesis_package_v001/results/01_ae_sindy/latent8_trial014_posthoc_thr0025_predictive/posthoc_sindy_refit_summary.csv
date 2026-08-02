@@ -1,0 +1,2 @@
+model,threshold,n_windows,mean_sindy_valid_time,min_sindy_valid_time,max_sindy_valid_time,std_sindy_valid_time,mean_decoder_error,mean_active_terms,solver_success_count,refit_train_mse,refit_active_terms,refit_sparsity_percent
+latent8_trial014,0.025,5,10.860000000000001,5.2,19.5,4.854935632940976,0.005778396315872669,292.0,5,0.0003019851840719146,292,18.88888888888889

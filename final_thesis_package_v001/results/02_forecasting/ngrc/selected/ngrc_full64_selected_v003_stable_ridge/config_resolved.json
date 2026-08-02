@@ -1,0 +1,64 @@
+{
+  "data": {
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 20.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "full64",
+    "model": "ngrc",
+    "run_id": "ngrc_full64_selected_v003_stable_ridge",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "feature_dimension": 4609,
+    "feature_set": "full",
+    "ridge_range_rationale": "ridge_alpha was selected from the corrected search range [1e-6, 1e-2]. Below that range the NGRC full64 readout solve is ill-conditioned and the validation horizon is not reproducible across BLAS thread configurations. The selected value 2.62e-05 sits an order of magnitude above the lower bound, in the well-posed regime.",
+    "selected_candidate_run_id": "ngrc_full64_optimizer_search_v003_stable_ridge_forest_trial0108_full_c18_d1_diagonal_bias_ridge2p6em05",
+    "selected_optimizer": "forest",
+    "selected_trial": 108,
+    "selection_input_config": "experiments/forecasting/ngrc/search/optimizer/ngrc_full64_optimizer_search_v003_stable_ridge/overall_best_config_validation.json",
+    "selection_metric": "valid_relative_l2_horizon_time",
+    "selection_source": "ngrc_full64_optimizer_search_v003_stable_ridge",
+    "selection_stage": "v003_final_selected_stable_ridge",
+    "stability_note": "same-profile deterministic rerun bit-identical; pinned/unpinned validation horizon difference 0.29%",
+    "supersedes": "forecasting/configs/ngrc/selected/full64_ngrc_selected_v002.json",
+    "test_used_for_selection": false
+  },
+  "model": {
+    "context_steps": 18,
+    "delay_spacing": 1,
+    "include_bias": true,
+    "include_cos": true,
+    "include_linear": true,
+    "include_quadratic": true,
+    "include_sin": true,
+    "quadratic_mode": "diagonal",
+    "ridge_alpha": 2.6240217545359344e-05
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  },
+  "resolved": {
+    "config_path": "final_thesis_package_v001/configs/02_forecasting/ngrc_full64.json",
+    "model_path": "final_thesis_package_v001/results/02_forecasting/ngrc/selected/ngrc_full64_selected_v003_stable_ridge/ngrc_model.npz",
+    "output_dir": "final_thesis_package_v001/results/02_forecasting/ngrc/selected/ngrc_full64_selected_v003_stable_ridge",
+    "repo_root": ".",
+    "standardizer_path": "final_thesis_package_v001/results/02_forecasting/ngrc/selected/ngrc_full64_selected_v003_stable_ridge/standardizer.npz"
+  }
+}

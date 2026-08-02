@@ -1,0 +1,62 @@
+{
+  "input_dim": 64,
+  "latent_dim": 6,
+  "model_order": 1,
+  "poly_order": 2,
+  "include_sine": false,
+  "activation": "elu",
+  "widths": [
+    256,
+    128,
+    64
+  ],
+  "coefficient_initialization": "xavier",
+  "sequential_thresholding": true,
+  "coefficient_threshold": 0.06331956570841726,
+  "coefficient_mask": null,
+  "init_coefficients": null,
+  "loss_weight_decoder": 1.0,
+  "loss_weight_sindy_z": 0.35967139304753415,
+  "loss_weight_sindy_x": 0.0008601390291327259,
+  "loss_weight_sindy_regularization": 0.0032440491563645707,
+  "learning_rate": 0.00013226379128037838,
+  "batch_size": 512,
+  "epoch_size": null,
+  "max_epochs": 500,
+  "refinement_epochs": 50,
+  "print_progress": true,
+  "print_frequency": 10,
+  "threshold_frequency": 25,
+  "seed": 42,
+  "deterministic": true,
+  "device": "auto",
+  "output_dir": "final_thesis_package_v001/results/01_ae_sindy/latent6_trial002_dynamics_baseline",
+  "run_name": "latent6_trial002_dynamics_baseline",
+  "log_level": "INFO",
+  "dt": 0.1,
+  "data_file": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+  "train_slice": [
+    0,
+    20000
+  ],
+  "val_slice": [
+    20000,
+    25000
+  ],
+  "test_slice": [
+    25000,
+    30106
+  ],
+  "normalize": true,
+  "horizon_error_threshold": 0.5,
+  "analysis_generate_plots": false,
+  "analysis_rollout_max_steps": 1000,
+  "visualization_output_dir": null,
+  "visualization_show": false,
+  "library_dim": 28,
+  "use_lyapunov": true,
+  "lambda_max": 0.043,
+  "lyapunov_time_label": "time $t$ [$1/\\lambda_{\\max}$]",
+  "physical_time_label": "time $t$",
+  "_package_note": "CHECKPOINT REANALYSIS CONFIG (Q-30 Option B APPROVED, 2026-07-15). This config does NOT retrain. It reanalyzes and visualizes the CANONICAL FROZEN CHECKPOINT experiments/optuna_stage2/runs/optuna_stage2_trial_002/model.pt (provenance retrained=false), copied verbatim into the package run dir, against the package frozen simulation data. A full retrain was attempted and rejected: repeating the training on a different CUDA stack did not reproduce the checkpoint numerically, so the frozen checkpoint is reanalysed instead of retrained. run_train.py MUST NOT be run with this config. Only run_analysis.py (--eval-split test) and run_visualize.py. The hyperparameter fields are recorded for provenance only; they are inert for reanalysis. Active data = final_thesis_package_v001/results/00_simulation/u_series.npy (package frozen simulation)."
+}

@@ -1,0 +1,89 @@
+{
+  "purpose": "Structured multi-window test evaluation of the frozen jointly trained latent-6 AE-SINDy model.",
+  "evaluation_type": "analysis_only_no_refit_no_retrain_no_model_selection",
+  "supports_result": "jointly trained latent-6 AE-SINDy (structural result)",
+  "model_identity": "latent6_trial002_dynamics_baseline",
+  "run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent6_trial002_dynamics_baseline/latent6_trial002_dynamics_baseline",
+  "config_path": "final_thesis_package_v001/configs/01_ae_sindy/latent6_trial002_dynamics_baseline_checkpoint_reanalysis.json",
+  "checkpoint_path": "final_thesis_package_v001/results/01_ae_sindy/latent6_trial002_dynamics_baseline/latent6_trial002_dynamics_baseline/model.pt",
+  "checkpoint_sha256": "30c3f2e16039142e6f82939c0ebc469af6238a8d24a1686c6bfbe4c8301d8294",
+  "params_pkl_sha256": "6f0032e4795d9ba0bed53d7e851bf26cf094912018c499c6a91ae61bc36874f6",
+  "run_config_json_sha256": "46154f92ace163870130bee98a018a18869ead03621b4b401c5afe2020b904d5",
+  "normalization_stats_sha256": "78caeed2bc910c9a97bb55b4551e9b0f7e6fcf2cd593f2d849321f87d10b319c",
+  "normalization_mean": 0.004138048738241196,
+  "normalization_std": 1.1890573501586914,
+  "normalization_kind": "global scalar z-score, train-only fit",
+  "simulation_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+  "simulation_data_sha256": "85bb1902875e2b3062685cf327f4695e9e106bfbae7b39b70961e92b520a4417",
+  "simulation_shape": [
+    30106,
+    64
+  ],
+  "train_slice": [
+    0,
+    20000
+  ],
+  "val_slice": [
+    20000,
+    25000
+  ],
+  "canonical_test_slice": [
+    25000,
+    30106
+  ],
+  "windows": [
+    [
+      25000,
+      26000
+    ],
+    [
+      26000,
+      27000
+    ],
+    [
+      27000,
+      28000
+    ],
+    [
+      28000,
+      29000
+    ],
+    [
+      29000,
+      30000
+    ]
+  ],
+  "windows_source": "scripts/posthoc_refit_sindy.py::TEST_WINDOWS",
+  "windows_role": "test_report",
+  "windows_fixed_before_evaluation": true,
+  "test_used_for_selection": false,
+  "latent_dim": 6,
+  "poly_order": 2,
+  "library_dim": 28,
+  "model_order": 1,
+  "activation": "elu",
+  "widths": [
+    256,
+    128,
+    64
+  ],
+  "dt": 0.1,
+  "solver": "RK45",
+  "solver_rtol": 1e-08,
+  "solver_atol": 1e-10,
+  "solver_max_step": 0.05,
+  "rollout_max_steps": 1000,
+  "error_definition": "per-timestep relative L2: ||u_true - u_pred||_2 / (||u_true||_2 + 1e-12), normalized field",
+  "error_threshold": 0.5,
+  "horizon_convention": "last_valid (valid_index = first_invalid_index - 1)",
+  "time_reporting": "physical simulation time (dt=0.1), rollout time axis re-based to 0",
+  "lambda_max": 1.0,
+  "std_convention": "population standard deviation, ddof=0",
+  "coefficients_source": "frozen checkpoint sindy_coefficients * frozen params.pkl coefficient_mask",
+  "model_modified": false,
+  "environment": {
+    "python": "3.12.10",
+    "torch": "2.6.0",
+    "numpy": "1.26.4"
+  }
+}

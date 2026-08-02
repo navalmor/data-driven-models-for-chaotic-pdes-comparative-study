@@ -1,0 +1,122 @@
+{
+  "_runtime": {
+    "run_group_override": "selected",
+    "run_id_override": "pinn_full64_selected_v003_physics_active"
+  },
+  "data": {
+    "data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "full64",
+    "model": "pinn",
+    "run_id": "pinn_full64_selected_v003_physics_active",
+    "type": "single"
+  },
+  "metadata": {
+    "candidate_id": "C5",
+    "case_label": "PINN-64",
+    "description": "Canonical selected PINN-64 physics-active configuration. Hyperparameters are candidate C5 = dummy trial 47 of the v003 physics-active optimizer search, chosen by a validation-only 15-seed median rule and locked before any test access. Supersedes the v002 selected configuration, whose physics term was inert (lambda_phy = 0.0).",
+    "final_seed_choice": {
+      "abs_difference_from_median": 0.0,
+      "note": "Deliberately NOT the best-performing C5 seed. The locked model must be typical of the seed distribution, not a lucky tail draw. The best seed was 9301112 at 23.1.",
+      "random_seed": 9301114,
+      "rule": "closest VPH to the candidate median among completed seeds",
+      "validation_horizon_time_at_this_seed": 19.8
+    },
+    "physics_status": "physics term is ACTIVE: lambda_phy > 0, the CNAB2 spectral residual is computed every step, and the final-20%% median physics contribution ratio is 0.019363045175079825 (>= the 1%% activity rule)",
+    "residual_policy": "raw CNAB2 only",
+    "runtime_profile": "scripts/repro_env.sh (single-threaded, PYTHONHASHSEED=0)",
+    "seed_robustness": {
+      "activity_ratio_median": 0.019363045175079825,
+      "n_scientific_failed": 0,
+      "n_seeds": 15,
+      "n_seeds_activity_eligible": 15,
+      "seed_set": [
+        9301101,
+        9301102,
+        9301103,
+        9301104,
+        9301105,
+        9301106,
+        9301107,
+        9301108,
+        9301109,
+        9301110,
+        9301111,
+        9301112,
+        9301113,
+        9301114,
+        9301115
+      ],
+      "vph_max": 23.1,
+      "vph_mean": 17.293333333333333,
+      "vph_median": 19.8,
+      "vph_min": 8.5,
+      "vph_stdev": 4.634878125484557
+    },
+    "selection_rule": "Candidate chosen by highest MEDIAN valid_relative_l2_horizon_time across 15 fresh seeds (9301101-9301115), then mean, then min, then median valid_relative_l2_mean. Validation only; no test metric was used at any point in selection.",
+    "selection_source": {
+      "phase": "P3 -> P4",
+      "representative_config_path": "experiments/pinn_full64_physics_active_work/p4_seed_robustness/attempts/attempt01/pinn/candidate_C05/p4_C5_seed_9301114/config_resolved.json",
+      "representative_config_sha256": "6bc086e74aebcaf4319bf5ccd212b7069030b477bd3a004e51ac30caa84697e4",
+      "source_config_path": "experiments/pinn_full64_physics_active_work/p3_search/attempts/attempt01/dummy/pinn/search/optimizer/pinn_full64_v003_physics_active_p3_dummy_attempt01/dummy/pinn_full64_v003_physics_active_p3_dummy_attempt01_dummy_trial0047_h512_d4_lr0p00033266127695166006_mh3_b0p7521100511934925_lam1p2346683760352606em07/config_resolved.json",
+      "source_config_sha256": "12a6df46d639da0a521812519c8b704cacd480df94b1752cef64c33dab1f07f5",
+      "source_family": "dummy",
+      "source_run_id": "pinn_full64_v003_physics_active_p3_dummy_attempt01_dummy_trial0047_h512_d4_lr0p00033266127695166006_mh3_b0p7521100511934925_lam1p2346683760352606em07",
+      "source_trial": 47
+    },
+    "stage": "pinn_full64_selected_v003_physics_active",
+    "supersede_reason": "The v002 selected PINN-64 configuration carried lambda_phy = 0.0, so the physics residual was never computed and the case was physics-informed in name only. This v003 configuration restores an active physics term through a validation-only search, seed-robustness assessment and paired ablation.",
+    "supersedes": "forecasting/configs/pinn/selected/full64_pinn_selected_v002_deterministic.json",
+    "test_policy": "evaluate_test=true and append_registry=true exactly once, after validation-only selection was closed and the configuration was locked",
+    "test_used_for_selection": false,
+    "zero_weight_ablation": {
+      "active_vph_median": 19.8,
+      "design": "paired by seed; only lambda_phy differed",
+      "median_paired_difference": 2.099999999999998,
+      "phase": "P4A",
+      "scope": "single-configuration, validation-only, paired descriptive result. The hyperparameters were themselves selected with physics active, which favours the active arm. It does not establish that physics-informed training is generally superior and it is not a significance test.",
+      "verdict": "ACTIVE ARM DESCRIPTIVELY FAVORED",
+      "zero_weight_vph_median": 14.8
+    }
+  },
+  "model": {
+    "activation": "tanh",
+    "batch_size": 128,
+    "batches_per_epoch": 60,
+    "beta_multistep": 0.7521100511934925,
+    "dealias": true,
+    "depth": 4,
+    "device": "auto",
+    "domain_length": 22.0,
+    "epochs": 140,
+    "gradient_clip_norm": 1.0,
+    "hidden_dim": 512,
+    "lambda_phy": 1.2346683760352606e-07,
+    "learning_rate": 0.00033266127695166006,
+    "multistep_horizon": 3,
+    "native_dimension": 64,
+    "physics_residual": "cnab2",
+    "physics_scale": "delta_rms",
+    "random_seed": 9301114,
+    "residual_prediction": true,
+    "weight_decay": 1e-06
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

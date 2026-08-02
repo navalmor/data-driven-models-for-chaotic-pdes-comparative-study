@@ -1,0 +1,138 @@
+{
+  "best_row_rule": "The search-time best row is derived at plot time: the row maximising valid_relative_l2_horizon_time. It is not stored, and it is not necessarily the final published model.",
+  "cases": [
+    "ngrc_full64",
+    "ngrc_latent8",
+    "rc_full64",
+    "rc_latent8",
+    "perc_full64",
+    "perc_latent8",
+    "pinn_full64",
+    "pinn_latent8"
+  ],
+  "column_types": {
+    "case_id": "string",
+    "model": "string",
+    "optimizer": "string (one of the optimizer vocabulary)",
+    "representation": "string",
+    "search_stage": "string",
+    "source_run_id": "string",
+    "source_search_order": "integer",
+    "status": "string",
+    "trial": "integer (unique per case+optimizer)",
+    "valid_relative_l2_horizon_time": "float"
+  },
+  "core_columns": [
+    "case_id",
+    "model",
+    "representation",
+    "optimizer",
+    "source_run_id",
+    "source_search_order",
+    "search_stage",
+    "trial",
+    "status"
+  ],
+  "dataset_version": "1.0.0",
+  "description": "Compact optimizer trial histories reproducing the 24 optimizer figures.",
+  "metric": "valid_relative_l2_horizon_time",
+  "objective": "maximize",
+  "optimizer_vocabulary": {
+    "dummy": "Random",
+    "forest": "Random forest",
+    "gbrt": "GBRT",
+    "gp": "Gaussian process"
+  },
+  "parameter_columns_by_case": {
+    "ngrc_full64": [
+      "context_steps",
+      "delay_spacing",
+      "ridge_alpha",
+      "feature_set",
+      "quadratic_mode",
+      "include_bias"
+    ],
+    "ngrc_latent8": [
+      "context_steps",
+      "delay_spacing",
+      "ridge_alpha",
+      "feature_set",
+      "quadratic_mode",
+      "include_bias"
+    ],
+    "perc_full64": [
+      "reservoir_size",
+      "spectral_radius",
+      "input_scaling",
+      "leaking_rate",
+      "ridge_alpha",
+      "sparsity",
+      "washout_steps"
+    ],
+    "perc_latent8": [
+      "reservoir_size",
+      "spectral_radius",
+      "input_scaling",
+      "leaking_rate",
+      "ridge_alpha",
+      "sparsity",
+      "washout_steps"
+    ],
+    "pinn_full64": [
+      "hidden_dim",
+      "learning_rate",
+      "beta_multistep",
+      "lambda_phy",
+      "multistep_horizon",
+      "random_seed",
+      "depth",
+      "epochs"
+    ],
+    "pinn_latent8": [
+      "hidden_dim",
+      "learning_rate",
+      "beta_multistep",
+      "lambda_phy",
+      "multistep_horizon",
+      "random_seed",
+      "depth",
+      "epochs"
+    ],
+    "rc_full64": [
+      "reservoir_size",
+      "spectral_radius",
+      "input_scaling",
+      "leaking_rate",
+      "ridge_alpha",
+      "sparsity",
+      "washout_steps"
+    ],
+    "rc_latent8": [
+      "reservoir_size",
+      "spectral_radius",
+      "input_scaling",
+      "leaking_rate",
+      "ridge_alpha",
+      "sparsity",
+      "washout_steps"
+    ]
+  },
+  "primary_key": [
+    "case_id",
+    "optimizer",
+    "trial"
+  ],
+  "raw_value_policy": "Categorical and boolean tokens are stored exactly as recorded by the search (for example 'full', 'linear_quadratic', 'true', 'false'). Plot-time display mapping is applied by the plotting code and never written into the data.",
+  "status_filter_rule": "Rows are plotted only when status == 'ok' and the metric parses as finite.",
+  "total_trials": 3040,
+  "trials_per_case": {
+    "ngrc_full64": 480,
+    "ngrc_latent8": 560,
+    "perc_full64": 320,
+    "perc_latent8": 400,
+    "pinn_full64": 320,
+    "pinn_latent8": 320,
+    "rc_full64": 320,
+    "rc_latent8": 320
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "data": {
+    "decoder_run_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/repro_latent8_trial014",
+    "native_data_dir": "final_thesis_package_v001/results/01_ae_sindy/latent8_trial014_representation/latent_data",
+    "physical_data_path": "final_thesis_package_v001/results/00_simulation/u_series.npy",
+    "train_end_index": 20000,
+    "valid_end_index": 25000
+  },
+  "evaluation": {
+    "dt": 0.1,
+    "prediction_safety_max_abs": 5.0,
+    "relative_l2_threshold": 0.5
+  },
+  "experiment": {
+    "data_mode": "latent8",
+    "model": "ngrc",
+    "run_id": "ngrc_latent8_selected_v002",
+    "type": "single"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "metadata": {
+    "selection_input_config": "experiments/forecasting/ngrc/search/optimizer/ngrc_latent8_optimizer_search_v002/overall_best_config_validation.json",
+    "selection_policy": "optimizer_only_after_grid_region_finding",
+    "selection_source": "v002_optimizer_dummy",
+    "selection_stage": "v002_final_selected",
+    "supersedes": "previous grid-selected latent8_v002 config"
+  },
+  "model": {
+    "context_steps": 3,
+    "delay_spacing": 1,
+    "include_bias": true,
+    "include_cos": true,
+    "include_linear": true,
+    "include_quadratic": true,
+    "include_sin": true,
+    "quadratic_mode": "pairwise",
+    "ridge_alpha": 5.3525270645640556e-05
+  },
+  "output": {
+    "append_registry": false,
+    "base_dir": "final_thesis_package_v001/results/02_forecasting",
+    "evaluate_test": true,
+    "overwrite": false,
+    "run_group": "selected"
+  },
+  "preprocessing": {
+    "standardize": true
+  }
+}

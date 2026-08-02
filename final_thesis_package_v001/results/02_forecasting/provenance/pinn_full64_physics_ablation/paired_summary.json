@@ -1,0 +1,41 @@
+{
+  "active_better_seeds": 11,
+  "active_finite_relative_l2_fraction_median": 0.0946,
+  "active_vph_median": 19.8,
+  "candidate": "C5",
+  "design": "paired by seed; one selected configuration (C5); only lambda_phy differed (1.2346683760352606e-07 vs 0.0)",
+  "mean_paired_difference_active_minus_zero": 2.58,
+  "median_paired_difference_active_minus_zero": 2.099999999999998,
+  "n_pairs": 15,
+  "qualifications": [
+    "Validation only; no test-split active-versus-zero comparison exists, by design.",
+    "A single configuration, not a family of configurations.",
+    "The hyperparameters were themselves tuned with the physics term active, which favours the active arm.",
+    "Not uniform: 4 of 15 seeds favour zero weight, two by margins comparable to the median gain.",
+    "The zero-weight arm shows marginally better post-threshold boundedness (median finite relative-L2 fraction 0.1074 versus 0.0946).",
+    "Descriptive only: no p-value, no confidence interval, no significance claim."
+  ],
+  "scope": "VALIDATION ONLY - no active-versus-zero comparison exists on the test split",
+  "seed_set": [
+    9301101,
+    9301102,
+    9301103,
+    9301104,
+    9301105,
+    9301106,
+    9301107,
+    9301108,
+    9301109,
+    9301110,
+    9301111,
+    9301112,
+    9301113,
+    9301114,
+    9301115
+  ],
+  "ties": 0,
+  "verdict": "ACTIVE ARM DESCRIPTIVELY FAVORED",
+  "zero_weight_better_seeds": 4,
+  "zero_weight_finite_relative_l2_fraction_median": 0.1074,
+  "zero_weight_vph_median": 14.8
+}

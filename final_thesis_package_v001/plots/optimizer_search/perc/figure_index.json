@@ -1,0 +1,50 @@
+{
+  "config_path": "final_thesis_package_v001/configs/03_plots/optimizer_search_perc.json",
+  "figures": [
+    {
+      "kind": "optimizer_convergence",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_full64/optimizer_convergence.png"
+      ]
+    },
+    {
+      "kind": "optimizer_sampling_matrix",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_full64/optimizer_sampling_matrix.png"
+      ]
+    },
+    {
+      "kind": "optimizer_surrogate_landscape",
+      "label": "perc_full64",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_full64/optimizer_surrogate_landscape.png"
+      ]
+    },
+    {
+      "kind": "optimizer_convergence",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_latent8/optimizer_convergence.png"
+      ]
+    },
+    {
+      "kind": "optimizer_sampling_matrix",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_latent8/optimizer_sampling_matrix.png"
+      ]
+    },
+    {
+      "kind": "optimizer_surrogate_landscape",
+      "label": "perc_latent8",
+      "paths": [
+        "final_thesis_package_v001/plots/optimizer_search/perc/perc_latent8/optimizer_surrogate_landscape.png"
+      ]
+    }
+  ],
+  "output_dir": "final_thesis_package_v001/plots/optimizer_search/perc",
+  "run_id": "final_optimizer_search_perc",
+  "skipped": []
+}

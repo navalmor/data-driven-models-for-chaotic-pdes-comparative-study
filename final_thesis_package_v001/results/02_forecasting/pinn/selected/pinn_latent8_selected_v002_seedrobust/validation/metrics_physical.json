@@ -1,0 +1,11 @@
+{
+  "finite_relative_l2_fraction": 0.9748,
+  "first_unsafe_index": 104,
+  "num_steps": 5000,
+  "prediction_safety_max_abs": 5.0,
+  "relative_l2_final": 1.084803581237793,
+  "relative_l2_horizon_time": 10.4,
+  "relative_l2_mean": 1.426840901374817,
+  "relative_l2_threshold": 0.5,
+  "safe_prefix_length": 104
+}

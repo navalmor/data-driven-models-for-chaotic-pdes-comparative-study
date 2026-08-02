@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+type: software
+title: "Optimized Data-Driven Models for PDEs: A Comparative Study"
+authors:
+  - family-names: Mor
+    given-names: "Naval Shukhabhai"
+    affiliation: "Department of Data Science, Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)"
+repository-code: "https://github.com/navalmor/data-driven-models-for-chaotic-pdes-comparative-study"
+# No release version or DOI has been assigned yet. Cite the commit hash you used.
+license: MIT

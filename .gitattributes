@@ -1,0 +1,23 @@
+# Git LFS tracking for the finalized thesis reproducibility package.
+# Binary / heavy artifacts go to LFS; source code and small text stay in normal git.
+# (These patterns are repo-wide, but only final_thesis_package_v001/ binaries are actually
+#  tracked — everything else heavy is covered by .gitignore.)
+
+# Numeric arrays
+*.npy   filter=lfs diff=lfs merge=lfs -text
+*.npz   filter=lfs diff=lfs merge=lfs -text
+
+# Model checkpoints / pickles
+*.pt      filter=lfs diff=lfs merge=lfs -text
+*.pth     filter=lfs diff=lfs merge=lfs -text
+*.pkl     filter=lfs diff=lfs merge=lfs -text
+*.joblib  filter=lfs diff=lfs merge=lfs -text
+
+# Figures / documents
+*.png   filter=lfs diff=lfs merge=lfs -text
+*.jpg   filter=lfs diff=lfs merge=lfs -text
+*.jpeg  filter=lfs diff=lfs merge=lfs -text
+*.pdf   filter=lfs diff=lfs merge=lfs -text
+
+# Kept in NORMAL git (text, reviewable, diffable): *.csv *.json *.md *.py *.txt *.sh
+# *.slurm *.sbatch *.sha256 *.log *.tsv *.yml — no filter lines, so they are not LFS.
